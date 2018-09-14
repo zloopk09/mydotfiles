@@ -114,6 +114,7 @@ alias gsb='git submodule'
 alias gst='git subtree'
 alias gsbu="git submodule foreach 'git checkout master; git pull'"
 alias gl="g log --graph --pretty=format:'%Cblue%h%Creset%d %Cgreen%an%Creset: %s %Cblue%ar%Creset'"
+alias mgit="python mgit.py"
 alias gw="./gradlew"
 alias gwb='./gradlew build'
 alias gwc='./gradlew clean'
