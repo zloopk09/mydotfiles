@@ -1,0 +1,29 @@
+[global_config]
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, Logger, LaunchpadBugURLHandler
+  focus = system
+  title_hide_sizetext = True
+  title_inactive_bg_color = "#2b303b"
+  title_inactive_fg_color = "#c0c5ce"
+  title_transmit_bg_color = "#2b303b"
+  title_transmit_fg_color = "#a3be8c"
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    allow_bold = False
+    background_color = "#2b303b"
+    copy_on_selection = True
+    cursor_color = "#97979b"
+    font = SauceCodePro Nerd Font Medium 12
+    foreground_color = "#eff0eb"
+    palette = "#282a36:#ff5c57:#5af78e:#f3f99d:#57c7ff:#ff6ac1:#9aedfe:#f1f1f0:#686868:#ff5c57:#5af78e:#f3f99d:#57c7ff:#ff6ac1:#9aedfe:#eff0eb"
+    scrollback_infinite = True
+    use_system_font = False

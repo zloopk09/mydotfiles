@@ -1,0 +1,18 @@
+rupa/z
+djui/alias-tips
+# Tarrasch/zsh-bd
+
+# robbyrussell/oh-my-zsh
+# robbyrussell/oh-my-zsh folder:plugins/git
+robbyrussell/oh-my-zsh folder:lib
+robbyrussell/oh-my-zsh folder:plugins/sudo
+
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+lukechilds/zsh-nvm
+
+# these should be at last!
+denysdovhan/spaceship-prompt
+# zsh-users/zsh-syntax-highlighting
+zdharma/fast-syntax-highlighting
+zsh-users/zsh-history-substring-search

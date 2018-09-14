@@ -1,0 +1,6 @@
+
+# <type>(<scope>): <subject> (Max 50 char)
+
+# <body> Explain why this change is being made
+
+# <footer> Example: Github issue #23

@@ -1,0 +1,97 @@
+[user]
+	name = zloopk09
+	email = zloopk09@gmail.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[color "grep"]
+	filename = magenta
+	linenumber = green
+	match = bold red
+[pager]
+    diff = diff-so-fancy | less --tabs=1,5 -RFX
+    show = diff-so-fancy | less --tabs=1,5 -RFX
+[core]
+    autocrlf = input
+    safecrlf = true
+    # attributesfile = ~/.gitattributes  # 多文件类型项目可以根据后缀名提交crlf的格式
+    editor = vim
+    precomposeunicode = true # Mac专用选项，开启以便文件名兼容其他系统
+    whitespace = trailing-space,space-before-tab # 默认设置
+    excludesfile = ~/.mydotfiles/git/.global_gitignore
+    pager = diff-so-fancy | less --tabs=4 -RFX
+[submodule]
+	fetchJobs = 4 # 跟clone通用
+[apply]
+    whitespace = nowarn
+[grep]
+	extendRegexp = true
+	lineNumber = true
+[commit]
+	template = ~/.git_commit_template.txt
+[push]
+	default = simple
+[pull]
+	rebase = true # 强制开启rebase
+[merge]
+	ff = false
+[merge]
+	tool = kdiff3
+[diff]
+	tool = kdiff3
+    renames = copies
+[difftool "kdiff3"]	
+	cmd = 'kdiff3' "$LOCAL" "$REMOTE" >& /dev/null
+[mergetool "kdiff3"] 
+	cmd = 'kdiff3' "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED"
+# see https://github.com/SixArm/sixarm_git_gitconfig/blob/master/gitconfig.d/alias.txt
+[alias]
+    a = add
+    b = branch
+    c = commit
+    d = diff
+    f = fetch
+    g = grep
+    l = log
+    m = merge
+    me = merge --no-commit --no-ff
+    co = checkout
+    pl = pull --prune
+    ph = push
+    ss = status --short
+    st = status
+    cl = clone
+    cp = cherry-pick
+    rbc = rebase --continue
+    rvnc = revert --no-commit
+    unadd = reset HEAD
+    uncommit = reset --soft HEAD^
+    undo = reset --hard
+    sm = submodule
+    smu = submodule update --init --recursive
+    lgs = log --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset'
+    lgl = log --all --graph --decorate --stat
+    als = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+# 放在最后 覆盖之前的
+[includeIf "gitdir:~/mrepo/github/"]
+    path = ~/mrepo/github/.gitconfig
+[includeIf "gitdir:~/mrepo/bitbucket/"]
+    path = ~/mrepo/bitbucket/.gitconfig
+# 私有配置文件
+[include]
+    path = ~/.gitconfig.local

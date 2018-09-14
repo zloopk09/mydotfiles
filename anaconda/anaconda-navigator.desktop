@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Anaconda-Navigator
+GenericName=Anaconda
+Comment=Scientific PYthon Development EnviRonment - Python3
+Exec=bash -c 'source /opt/anaconda/bin/activate && anaconda-navigator'
+Categories=Development;Science;IDE;Qt;Education;
+Icon=python
+Terminal=false
+StartupNotify=true
+MimeType=text/x-python;
