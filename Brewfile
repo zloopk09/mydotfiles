@@ -43,7 +43,6 @@ brew "coreutils"
 # brew "moreutils"
 brew "dex2jar"
 brew "wget"
-brew "git"
 brew "git-flow"
 brew "hub" # 可以替换git命令的封装工具
 brew "neovim"
@@ -139,7 +138,6 @@ cask "quicklookapk"  # apk预览
 
 # brew "mas"
 mas "HandShaker", id: 1012930195
-mas "DrUnarchiver", id: 1127253508
 mas "WeChat", id: 836500024
 mas "Amphetamine", id: 937984704
 mas "Xcode", id: 497799835

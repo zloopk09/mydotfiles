@@ -149,7 +149,8 @@ echo "==========================================================================
 if [ "$System" == "Darwin" ];then
     # brew bundle -v --file="$dotfile_path"/packages/Brewfile
     info "preparing..."
-    brew bundle
+    brew update
+    brew bundle -v
     ok "done"
 else
     info "preparing..."
@@ -365,7 +366,6 @@ if [ "$(uname -s)" = "Darwin" ]; then
     echo "==                     step(9/10):terminal  zsh antibody iterm2             =="
     echo "=============================================================================="
     info "check zsh..."
-    brew install zsh
     BREW_ZSH=$(brew --prefix)/bin/zsh
     echo "zsh version: $($BREW_ZSH --version)"
     if [[ $SHELL == *"zsh"* ]]; then
