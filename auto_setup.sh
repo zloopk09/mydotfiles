@@ -115,7 +115,7 @@ else
     # ln -sf "$DOTFILES/etc/mirrorlist" /etc/pacman.d/mirrorlist
     
     info "sync&refresh database"
-    sudo pacman -Syy --noconfirm
+    sudo pacman -Syy --noconfirm 
 
     info "install base tools: base-devel git curl wget yay"
     sudo pacman -S --needed --noconfirm archlinuxcn-keyring
@@ -139,6 +139,7 @@ else
     # fi
 
     info "update system..."
+    # --ignore=fcitx-sogoupinyin
     sudo pacman -Syyu --noconfirm
     ok "done"
 fi
@@ -196,6 +197,8 @@ mkdir -p "$HOME/mrepo/bitbucket"
 ok "working space dir been updated"
 info "linking bin"
 makelink "$DOTFILES"/bin ~/bin
+info "linking bak"
+makelink "$DOTFILES"/bak ~/bak
 ok "done"
 
 
