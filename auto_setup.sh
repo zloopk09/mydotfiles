@@ -438,11 +438,11 @@ info "linking proxychains"
 # makelink "$DOTFILES/proxychains" etc/.proxychains
 makelink "$DOTFILES/proxychains" ~/.proxychains
 
-info "linking SwitchHosts"
-mkdir -p ~/.SwitchHosts
-makelink "$DOTFILES/SwitchHosts/data.json" ~/.SwitchHosts/data.json
-makelink "$DOTFILES/SwitchHosts/preferences.json" ~/.SwitchHosts/preferences.json
-ok "done"
+# info "linking SwitchHosts"
+# mkdir -p ~/.SwitchHosts
+# makelink "$DOTFILES/SwitchHosts/data.json" ~/.SwitchHosts/data.json
+# makelink "$DOTFILES/SwitchHosts/preferences.json" ~/.SwitchHosts/preferences.json
+# ok "done"
 
 echo ""
 echo "=============================================================================="
