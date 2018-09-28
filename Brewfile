@@ -95,11 +95,12 @@ cask "switchhosts"
 cask "flux"
 cask "anaconda"
 cask "cocoapods-app"
-cask "sip"
+# cask "sip"
 cask "spectacle"
 cask "sequel-pro"
 cask "db-browser-for-sqlite"
 cask "java8"
+cask "java10"
 cask "java"
 brew "gradle"
 brew "maven"
@@ -148,7 +149,6 @@ mas "Pages", id: 409201541
 mas "QQ", id: 451108668
 mas "Numbers", id: 409203825
 mas "NeteaseMusic", id: 944848654
-# mas "Unsplash Wallpapers", id: 1284863847
 
 
 #

@@ -241,14 +241,14 @@ if [ "$(uname -s)" = "Darwin" ]; then
     echo "==                     step(5/10):terminal  zsh antibody iterm2             =="
     echo "=============================================================================="
     info "check zsh..."
-    BREW_ZSH=$(brew --prefix)/bin/zsh
+    BREW_ZSH=/usr/local/bin/zsh
     echo "zsh version: $($BREW_ZSH --version)"
     if [[ $SHELL == *"zsh"* ]]; then
         ok "Shell already set to zsh.";
     else
         info "Setting shell to zsh...";
         sudo sh -c "echo $BREW_ZSH >> /etc/shells"
-        sudo chsh -s "$BREW_ZSH"
+        chsh -s $BREW_ZSH
         ok "default shell has set to $BREW_ZSH"
     fi
 
@@ -280,7 +280,7 @@ else
         ok "Shell already set to zsh.";
     else
         info "Setting shell to zsh...";
-        sudo chsh -s $MY_ZSH
+        chsh -s $MY_ZSH
         ok "default shell has set to $MY_ZSH"
     fi
 
@@ -323,7 +323,7 @@ fi
 
 if ! conda env list | grep "basicPy36"  ; then
     info "creating basicPy36 env"
-    conda create -n -y basicPy36 -y python=3.6
+    conda create -n basicPy36 -y python=3.6
 else
     ok "basicPy36 env has already created"
 fi
