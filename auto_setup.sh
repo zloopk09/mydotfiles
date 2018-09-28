@@ -376,7 +376,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
     else
         info "Setting shell to zsh...";
         sudo sh -c "echo $BREW_ZSH >> /etc/shells"
-        sudo chsh -s $BREW_ZSH
+        sudo chsh -s "$BREW_ZSH"
         ok "default shell has set to $BREW_ZSH"
     fi
 
