@@ -30,7 +30,7 @@ brew "ack" # 文本搜索 代替grep
 brew "bat" # cat的替代品
 brew "tldr" # man的替代品
 brew "asciinema" # 终端录屏和分享
-brew "asciinema2gif"
+# brew "asciinema2gif"
 brew "cmake"
 brew "gnupg"  # enable PGP-signing commits.
 brew "mas"
