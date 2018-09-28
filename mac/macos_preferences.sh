@@ -13,13 +13,6 @@ chflags nohidden ~/Library
 echo "  › Show the /Volumes folder"
 sudo chflags nohidden /Volumes
 
-echo "  › Disable smart quotes and smart dashes as they're annoying when typing code"
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
-
-echo "  › Disable auto-correct"
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-
 echo "  › Avoid the creation of .DS_Store files on network volumes"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
@@ -41,9 +34,6 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 echo "  › Disable it from starting everytime a device is plugged in"
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
-
-echo "  › Disable press-and-hold for keys in favor of key repeat"
-defaults write -g ApplePressAndHoldEnabled -bool false
 
 echo "  › Disable the annoying backswipe in Chrome"
 defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
