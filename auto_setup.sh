@@ -17,9 +17,9 @@ cat << "EOF"
     88  .8D `8b  d8'    88    88        .88.   88booo. 88.     db   8D
     Y8888D'  `Y88P'     YP    YP      Y888888P Y88888P Y88888P `8888Y'
 
-        warning!!!: please read the source before you using it!!!
-        warning!!!: please read the source before you using it!!!
-        warning!!!: please read the source before you using it!!!
+        warning!!!: please read the source before using it!!!
+        warning!!!: please read the source before using it!!!
+        warning!!!: please read the source before using it!!!
 
 EOF
 
@@ -304,36 +304,37 @@ echo "==                     step(6/10):config anaconda  python env             
 echo "=============================================================================="
 if type conda > /dev/null 2>&1; then
     ok "anaconda has already installed"
-    if ! conda env list | grep "basicPy36"  ; then
-        info "creating basicPy36 env"
-        conda create -n -y basicPy36 -y python=3.6
-    else
-        ok "basicPy36 env has already created"
-    fi
-
-    if ! conda env list | grep "basicPy27" ; then
-        info "creating basicPy27 env"
-        conda create -n basicPy27 -y python=2.7
-    else
-        ok "basicPy27 env has already created"
-    fi
-
-    info "disable prompt conflict with spaceship prompt"
-    conda config --set changeps1 False
-    ok "done"
-    echo "conda env list"
-    conda env list
 else
     info  "Installing anaconda"
     if [ "$System" == "Darwin" ];then
         brew cask install anaconda
+        export PATH=/usr/local/anaconda3/bin:"$PATH"
     else
         sudo pacman -S --needed --noconfirm anaconda
+        export PATH="/opt/anaconda/bin:$PATH"
     fi
-    ok "You may need to create conda env later: conda create -n basicPy36 python=3.6"
-    ok "You may need to create conda env later: conda create -n basicPy27 python=2.7"
-    ok "done"
+    ok "anaconda has installed"
 fi
+
+if ! conda env list | grep "basicPy36"  ; then
+    info "creating basicPy36 env"
+    conda create -n -y basicPy36 -y python=3.6
+else
+    ok "basicPy36 env has already created"
+fi
+
+if ! conda env list | grep "basicPy27" ; then
+    info "creating basicPy27 env"
+    conda create -n basicPy27 -y python=2.7
+else
+    ok "basicPy27 env has already created"
+fi
+
+info "disable prompt conflict with spaceship prompt"
+conda config --set changeps1 False
+ok "done"
+echo "conda env list"
+conda env list
 
 
 # using zsh plugin instead
