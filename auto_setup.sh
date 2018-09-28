@@ -73,6 +73,11 @@ else
     exit 2
 fi
 
+# see https://gist.github.com/cowboy/3118588
+# Ask for the administrator password upfront
+sudo -v
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 if [ "$System" == "Darwin" ];then
     echo "=============================================================================="
@@ -353,25 +358,28 @@ echo "==                     step(7/10):rbenv  ruby env                         
 echo "=============================================================================="
 if type rbenv > /dev/null 2>&1; then
     ok "rbenv has already installed"
-    if ! rbenv versions | grep "2.4.0" ; then
-        info "rbenv install 2.4.0"
-        rbenv install 2.4.0
-    else
-        ok "rbenv env 2.4.0 has already installed"
-    fi
-    echo "rbenv versions"
-    rbenv versions
 else
     info  "Installing rbenv"
     if [ "$System" == "Darwin" ];then
         brew install rbenv
+        eval "$(rbenv init -)"
     else
         yay -S --needed --noconfirm rbenv
+        export PATH="$HOME/.rbenv/bin:$PATH"
+        eval "$(rbenv init -)"
     fi
     # curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
     ok "rbenv has installed"
-    ok "you may check the rbenv/ruby version later: rbenv versions"
 fi
+
+if ! rbenv versions | grep "2.5.1" ; then
+    info "rbenv install 2.5.1"
+    rbenv install 2.5.1
+else
+    ok "rbenv env 2.5.1 has already installed"
+fi
+echo "rbenv versions"
+rbenv versions
 
 
 echo "=============================================================================="
@@ -409,19 +417,19 @@ fi
 if test "$(command -v code)"; then
 	# from `code --list-extensions`
     info "update vscode plugins"
-    code --install-extension PeterJausovec.vscode-docker
-	code --install-extension Tyriar.sort-lines
-	code --install-extension ms-python.python
-	code --install-extension AlanWalk.markdown-toc
-	code --install-extension akamud.vscode-theme-onedark
-	code --install-extension k--kato.intellij-idea-keybindings
-	code --install-extension naco-siren.gradle-language
-	code --install-extension donjayamanne.githistory
-    code --install-extension redhat.java
-    code --install-extension vscjava.vscode-java-debug
-    code --install-extension vscjava.vscode-java-pack
-	code --install-extension robertohuertasm.vscode-icons
-	code --install-extension yzhang.markdown-all-in-one
+    echo "yes" | code --install-extension PeterJausovec.vscode-docker
+	echo "yes" | code --install-extension Tyriar.sort-lines
+	echo "yes" | code --install-extension ms-python.python
+	echo "yes" | code --install-extension AlanWalk.markdown-toc
+	echo "yes" | code --install-extension akamud.vscode-theme-onedark
+	echo "yes" | code --install-extension k--kato.intellij-idea-keybindings
+	echo "yes" | code --install-extension naco-siren.gradle-language
+	echo "yes" | code --install-extension donjayamanne.githistory
+    echo "yes" | code --install-extension redhat.java
+    echo "yes" | code --install-extension vscjava.vscode-java-debug
+    echo "yes" | code --install-extension vscjava.vscode-java-pack
+	echo "yes" | code --install-extension robertohuertasm.vscode-icons
+	echo "yes" | code --install-extension yzhang.markdown-all-in-one
     ok "vscode plugins has updated"
 
 	if [ "$(uname -s)" = "Darwin" ]; then
