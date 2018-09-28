@@ -151,14 +151,17 @@ mas "NeteaseMusic", id: 944848654
 # mas "Unsplash Wallpapers", id: 1284863847
 
 
-# 
-# 
+#
+# SpechtLite
+# FileZilla
+# picgo-appimage ipic
 # bartender
-# navicat 或者 datagrip
-# omni系列
+# navicat
+# omni
 # dash
-# Pixelmator Pro
+# xmind
+# Pixelmator
 # Mindnode
-# cask "sketch"
+# sketch
 # anyconnection
 # 
