@@ -73,6 +73,7 @@ else
     exit 2
 fi
 
+
 if [ "$System" == "Darwin" ];then
     echo "=============================================================================="
     echo "==                     step(1/10):xcode & homebrew                          =="
@@ -140,9 +141,10 @@ else
 
     info "update system..."
     # --ignore=fcitx-sogoupinyin
-    sudo pacman -Syyu --noconfirm
+    sudo pacman -Syyu --noconfirm 
     ok "done"
 fi
+
 
 echo "=============================================================================="
 echo "==                     step(2/10):install softwares                         =="
@@ -164,6 +166,7 @@ else
 
     ok "done"
 fi
+
 
 echo "=============================================================================="
 echo "==                     step(3/10):update system configuration               =="
@@ -202,7 +205,6 @@ makelink "$DOTFILES"/bak ~/bak
 ok "done"
 
 
-
 echo "=============================================================================="
 echo "==                     step(4/10):config git                                =="
 echo "=============================================================================="
@@ -228,22 +230,74 @@ makelink "$DOTFILES/mrepo/github/.gitconfig" ~/mrepo/github/.gitconfig
 makelink "$DOTFILES/mrepo/bitbucket/.gitconfig" ~/mrepo/bitbucket/.gitconfig
 ok "done"
 
-echo "=============================================================================="
-echo "==                     step(5/10):config vim with SpaceVim                  =="
-echo "=============================================================================="
-if [ -d "$HOME/.SpaceVim" ] ; then
-    ok "SpaceVim has already installed"
-    info "Trying to update SpaceVim"
-    cd "$HOME/.SpaceVim"
-    git pull
-    cd - > /dev/null 2>&1
-    ok "Successfully update SpaceVim"
+
+if [ "$(uname -s)" = "Darwin" ]; then
+    echo "=============================================================================="
+    echo "==                     step(5/10):terminal  zsh antibody iterm2             =="
+    echo "=============================================================================="
+    info "check zsh..."
+    BREW_ZSH=$(brew --prefix)/bin/zsh
+    echo "zsh version: $($BREW_ZSH --version)"
+    if [[ $SHELL == *"zsh"* ]]; then
+        ok "Shell already set to zsh.";
+    else
+        info "Setting shell to zsh...";
+        sudo sh -c "echo $BREW_ZSH >> /etc/shells"
+        sudo chsh -s "$BREW_ZSH"
+        ok "default shell has set to $BREW_ZSH"
+    fi
+
+    info "checking antibody"
+    if test "$(command -v antibody)"; then
+	    ok "antibody already installed";
+    else
+        info "installing antibody..."
+        brew install getantibody/tap/antibody
+        ok "antibody installed";
+    fi
+
+    info "config iterm2..."
+    # comes from http://stratus3d.com/blog/2015/02/28/sync-iterm2-profile-with-dotfiles-repository/
+    # Specify the preferences directory
+    defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$DOTFILES/iterm2"
+    # Tell iTerm2 to use the custom preferences in the directory
+    defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+    ok "done iterm2 config"
+    echo "you may need to open iterm2, and set it as the default terminal."
 else
-    info  "Installing SpaceVim"
-    curl -sLf https://spacevim.org/cn/install.sh | bash
-    ok "SpaceVim has installed"
-    ok "You may need to open vim to install/update plugins"
+    echo "=============================================================================="
+    echo "==                     step(5/10):terminal   zsh antibody terminator        =="
+    echo "=============================================================================="
+    info "check zsh..."
+    MY_ZSH=/usr/bin/zsh
+    echo "zsh version: $($MY_ZSH --version)"
+    if [[ $SHELL == *"zsh"* ]]; then
+        ok "Shell already set to zsh.";
+    else
+        info "Setting shell to zsh...";
+        sudo chsh -s $MY_ZSH
+        ok "default shell has set to $MY_ZSH"
+    fi
+
+    info "checking antibody"
+    if test "$(command -v antibody)"; then
+	    ok "antibody already installed";
+    else
+        info "installing antibody..."
+        curl -sL git.io/antibody | sh -s
+        ok "antibody installed";
+    fi
+
+    info "config terminator"
+    sudo pacman -S --needed --noconfirm terminator 
+    mkdir -p ~/.config/terminator/
+    makelink "$DOTFILES/terminator/config" ~/.config/terminator/config
+    ok "done terminator config"
 fi
+info "linking zshrc"
+makelink "$DOTFILES/zsh/.zshrc" ~/.zshrc
+ok "done"
+
 
 echo "=============================================================================="
 echo "==                     step(6/10):config anaconda  python env               =="
@@ -292,6 +346,7 @@ fi
 #   ok "nvm has installed"
 # fi
 
+
 echo "=============================================================================="
 echo "==                     step(7/10):rbenv  ruby env                           =="
 echo "=============================================================================="
@@ -319,7 +374,25 @@ fi
 
 
 echo "=============================================================================="
-echo "==                     step(8/10):vscode                                    =="
+echo "==                     step(8/10):config vim with SpaceVim                  =="
+echo "=============================================================================="
+if [ -d "$HOME/.SpaceVim" ] ; then
+    ok "SpaceVim has already installed"
+    info "Trying to update SpaceVim"
+    cd "$HOME/.SpaceVim"
+    git pull
+    cd - > /dev/null 2>&1
+    ok "Successfully update SpaceVim"
+else
+    info  "Installing SpaceVim"
+    curl -sLf https://spacevim.org/cn/install.sh | bash
+    ok "SpaceVim has installed"
+    ok "You may need to open vim to install/update plugins"
+fi
+
+
+echo "=============================================================================="
+echo "==                     step(9/10):vscode                                    =="
 echo "=============================================================================="
 if type code > /dev/null 2>&1; then
     ok "vscode has already installed"
@@ -364,85 +437,20 @@ else
 fi
 
 
-if [ "$(uname -s)" = "Darwin" ]; then
-    echo "=============================================================================="
-    echo "==                     step(9/10):terminal  zsh antibody iterm2             =="
-    echo "=============================================================================="
-    info "check zsh..."
-    BREW_ZSH=$(brew --prefix)/bin/zsh
-    echo "zsh version: $($BREW_ZSH --version)"
-    if [[ $SHELL == *"zsh"* ]]; then
-        ok "Shell already set to zsh.";
-    else
-        info "Setting shell to zsh...";
-        sudo sh -c "echo $BREW_ZSH >> /etc/shells"
-        sudo chsh -s "$BREW_ZSH"
-        ok "default shell has set to $BREW_ZSH"
-    fi
-
-    info "checking antibody"
-    if test "$(command -v antibody)"; then
-	    ok "antibody already installed";
-    else
-        info "installing antibody..."
-        brew install getantibody/tap/antibody
-        ok "antibody installed";
-    fi
-
-    info "config iterm2..."
-    # comes from http://stratus3d.com/blog/2015/02/28/sync-iterm2-profile-with-dotfiles-repository/
-    # Specify the preferences directory
-    defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$DOTFILES/iterm2"
-    # Tell iTerm2 to use the custom preferences in the directory
-    defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
-    ok "done iterm2 config"
-    echo "you may need to open iterm2, and set it as the default terminal."
-else
-    echo "=============================================================================="
-    echo "==                     step(9/10):terminal   zsh antibody terminator        =="
-    echo "=============================================================================="
-    info "check zsh..."
-    MY_ZSH=/usr/bin/zsh
-    echo "zsh version: $($MY_ZSH --version)"
-    if [[ $SHELL == *"zsh"* ]]; then
-        ok "Shell already set to zsh.";
-    else
-        info "Setting shell to zsh...";
-        sudo chsh -s $MY_ZSH
-        ok "default shell has set to $MY_ZSH"
-    fi
-
-    info "checking antibody"
-    if test "$(command -v antibody)"; then
-	    ok "antibody already installed";
-    else
-        info "installing antibody..."
-        curl -sL git.io/antibody | sh -s
-        ok "antibody installed";
-    fi
-
-    info "config terminator"
-    sudo pacman -S --needed --noconfirm terminator 
-    mkdir -p ~/.config/terminator/
-    makelink "$DOTFILES/terminator/config" ~/.config/terminator/config
-    ok "done terminator config"
-fi
-info "linking zshrc"
-makelink "$DOTFILES/zsh/.zshrc" ~/.zshrc
-ok "done"
-
 echo "=============================================================================="
 echo "==                     step(10/10):link other dotfiles                      =="
 echo "=============================================================================="
 info "linking proxychains"
 # makelink "$DOTFILES/proxychains" etc/.proxychains
 makelink "$DOTFILES/proxychains" ~/.proxychains
+ok "done"
 
 # info "linking SwitchHosts"
 # mkdir -p ~/.SwitchHosts
 # makelink "$DOTFILES/SwitchHosts/data.json" ~/.SwitchHosts/data.json
 # makelink "$DOTFILES/SwitchHosts/preferences.json" ~/.SwitchHosts/preferences.json
 # ok "done"
+
 
 echo ""
 echo "=============================================================================="
