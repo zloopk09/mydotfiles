@@ -144,7 +144,7 @@ mas "HandShaker", id: 1012930195
 mas "WeChat", id: 836500024
 mas "Amphetamine", id: 937984704
 mas "Xcode", id: 497799835
-mas "DrCleaner", id: 921458519
+# mas "DrCleaner", id: 921458519
 mas "Keynote", id: 409183694
 mas "Bear", id: 1091189122
 mas "Pages", id: 409201541
