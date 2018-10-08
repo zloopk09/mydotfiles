@@ -1,6 +1,6 @@
+# see https://github.com/rbenv/rbenv/wiki/Unix-shell-initialization
 # zmodload zsh/zprof
 
-export DOTFILES="$HOME/.mydotfiles"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Use vim as the default text editor
@@ -11,6 +11,13 @@ HIST_STAMPS="mm/dd/yyyy"
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
+# don't record dupes in history
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_VERIFY
+setopt HIST_EXPIRE_DUPS_FIRST
 
 # DISABLE AUTOCORRECTION
 DISABLE_CORRECTION="true"
@@ -19,16 +26,34 @@ export LANG=en_US.UTF-8
 # autoload color
 autoload -U colors && colors
 
-# export NVM_LAZY_LOAD=true
+export NVM_LAZY_LOAD=true
 # export NVM_NO_USE=true
 
 # antibody dynamic load
+# load oh-my-zsh properly, see https://github.com/getantibody/antibody/issues/218
+# ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
 source <(antibody init)
-antibody bundle < $DOTFILES/zsh/antibody.txt
+# antibody bundle < ~/.antibody.txt
+
+antibody bundle rupa/z
+antibody bundle djui/alias-tips
+
+antibody bundle robbyrussell/oh-my-zsh folder:lib
+antibody bundle robbyrussell/oh-my-zsh folder:plugins/sudo
+
+antibody bundle zsh-users/zsh-completions
+antibody bundle zsh-users/zsh-autosuggestions
+antibody bundle lukechilds/zsh-nvm
+
+# these should be at last!
+antibody bundle denysdovhan/spaceship-prompt
+# antibody bundle zsh-users/zsh-syntax-highlighting
+antibody bundle zdharma/fast-syntax-highlighting
+antibody bundle zsh-users/zsh-history-substring-search
 
 # antibody static load
 # terminal run 
-# antibody bundle < $DOTFILES/zsh/antibody.txt > ~/.zsh_plugins.sh
+# antibody bundle < ~/.antibody.txt > ~/.zsh_plugins.sh
 # to generate file, then zshrc using
 # source ~/.zsh_plugins.sh
 
@@ -51,34 +76,18 @@ else
   compinit -C -i
 fi
 
-# see https://nick-tomlin.com/2018/03/10/speeding-up-zsh-loading-times-by-lazily-loading-nvm/
-# lazy load nvm to speed up zsh start up time
-function nvmlazy () {
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"  # This loads nvm zsh_completion
-}
-nvmrclazy() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    if ! type nvm >/dev/null; then
-      nvmlazy
-    fi
-    nvm use
-  fi
-}
-add-zsh-hook chpwd nvmrclazy
-
+# google's git-repo tool definition
+export REPO_URL='https://github.com/zloopk09/git-repo-mirror'
 
 # alias
 alias ls="exa"
 alias py2="source activate basicPy27"
 alias py3="source activate basicPy36"
-alias dpy2="source deactivate basicPy27"
-alias dpy3="source deactivate basicPy36"
+alias unpy="source deactivate"
+alias py='python'
 alias pc="proxychains4"
 alias zshrc="vim ~/.zshrc"
 alias szshrc="source ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
 alias gitconfig="vim ~/.gitconfig"
 alias ll='ls -la'
 alias vi="vim"
@@ -87,6 +96,37 @@ alias g="git"
 alias myip="curl ip.cn"
 alias hs='history | grep'
 alias rm="trash"
+alias rbv='rbenv'
+alias rbvv='rbenv versions'
+alias rbvlist='rbenv install -l'
+alias rbvg='rbenv global'
+alias rbvl='rbenv local'
+alias rbvs='rbenv shell'
+alias rbvha='rbenv rehash'
+alias ga='git add'
+alias gc='git commit -v'
+alias gcm='g commit -m'
+alias gpl='git pull'
+alias gph='git push'
+alias gd='git diff'
+alias gco='git checkout'
+alias gsb='git submodule'
+alias gst='git subtree'
+alias gsbu="git submodule foreach 'git checkout master; git pull'"
+alias gl="g log --graph --pretty=format:'%Cblue%h%Creset%d %Cgreen%an%Creset: %s %Cblue%ar%Creset'"
+alias mgit="python mgit.py"
+alias gw="./gradlew"
+alias gwb='./gradlew build'
+alias gwc='./gradlew clean'
+alias drps="docker ps" # -a -q
+alias drimg="docker images"
+alias drrd="docker run -d -P"
+alias drri="docker run -i -t -P"
+alias drexe="docker exec -i -t"
+# Stop all containers
+drst() { docker stop $(docker ps -a -q); }
+# Bash into running container
+drboard() { docker exec -it $(docker ps -aqf "name=$1") bash; }
 
 eval $(thefuck --alias FUCK)
 eval $(thefuck --alias fuck)
@@ -94,7 +134,7 @@ eval $(thefuck --alias fuck)
 # system specific
 if [ "$(uname)" = "Darwin" ]; then
   # copy ssh public key
-  alias mysshkey="pbcopy < ~/.ssh/id_rsa.pub | echo '=> Public key copied to pasteboard.'"
+  alias msshkey="pbcopy < ~/.ssh/id_rsa.pub | echo '=> Public key copied to pasteboard.'"
 
   # python环境切换
   export PATH=/usr/local/anaconda3/bin:"$PATH"
@@ -123,7 +163,12 @@ if [ "$(uname)" = "Darwin" ]; then
 else
   # GNU/Linux
   # copy ssh public key
-  alias mysshkey="xclip -sel clip < ~/.ssh/id_rsa.pub | echo '=> Public key copied to pasteboard.'"
+  alias msshkey="xclip -sel clip < ~/.ssh/id_rsa.pub | echo '=> Public key copied to pasteboard.'"
+  # added by Anaconda3 installer
+  export PATH="/opt/anaconda/bin:$PATH"
+
+  alias ss="export ALL_PROXY=socks5://127.0.0.1:1080"
+  alias unss="unset ALL_PROXY"
 
   # rbenv
   export PATH="$HOME/.rbenv/bin:$PATH"

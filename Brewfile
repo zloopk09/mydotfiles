@@ -6,7 +6,7 @@ tap "homebrew/cask-versions"
 tap "homebrew/services"
 tap "homebrew/cask-fonts"
 tap "homebrew/command-not-found"
-tap "getantibody/tap"
+# tap "getantibody/tap"
 
 # basic
 brew "git"
@@ -48,7 +48,8 @@ brew "git-flow"
 brew "hub" # 可以替换git命令的封装工具
 brew "neovim"
 brew "zsh"
-brew "antibody"
+# brew "antibody"
+brew "antigen"
 brew "diff-so-fancy"
 brew "jmeter"
 brew "stow"

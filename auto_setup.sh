@@ -238,9 +238,11 @@ ok "done"
 
 if [ "$(uname -s)" = "Darwin" ]; then
     echo "=============================================================================="
-    echo "==                     step(5/10):terminal  zsh antibody iterm2             =="
+    echo "==                     step(5/10):terminal  zsh antigen  iterm2             =="
     echo "=============================================================================="
-    info "check zsh..."
+    info "config env..."
+    brew install zsh antigen
+    brew cask install iterm2
     BREW_ZSH=/usr/local/bin/zsh
     echo "zsh version: $($BREW_ZSH --version)"
     if [[ $SHELL == *"zsh"* ]]; then
@@ -250,15 +252,6 @@ if [ "$(uname -s)" = "Darwin" ]; then
         sudo sh -c "echo $BREW_ZSH >> /etc/shells"
         chsh -s $BREW_ZSH
         ok "default shell has set to $BREW_ZSH"
-    fi
-
-    info "checking antibody"
-    if test "$(command -v antibody)"; then
-	    ok "antibody already installed";
-    else
-        info "installing antibody..."
-        brew install getantibody/tap/antibody
-        ok "antibody installed";
     fi
 
     info "config iterm2..."
@@ -271,9 +264,12 @@ if [ "$(uname -s)" = "Darwin" ]; then
     echo "you may need to open iterm2, and set it as the default terminal."
 else
     echo "=============================================================================="
-    echo "==                     step(5/10):terminal   zsh antibody terminator        =="
+    echo "==                     step(5/10):terminal   zsh antigen  terminator        =="
     echo "=============================================================================="
-    info "check zsh..."
+    info "config env..."
+    sudo pacman -S --needed --noconfirm zsh terminator
+    yay -S --needed --noconfirm antigen-git
+
     MY_ZSH=/usr/bin/zsh
     echo "zsh version: $($MY_ZSH --version)"
     if [[ $SHELL == *"zsh"* ]]; then
@@ -282,15 +278,6 @@ else
         info "Setting shell to zsh...";
         chsh -s $MY_ZSH
         ok "default shell has set to $MY_ZSH"
-    fi
-
-    info "checking antibody"
-    if test "$(command -v antibody)"; then
-	    ok "antibody already installed";
-    else
-        info "installing antibody..."
-        curl -sL git.io/antibody | sh -s
-        ok "antibody installed";
     fi
 
     info "config terminator"

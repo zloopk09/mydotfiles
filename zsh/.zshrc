@@ -8,16 +8,6 @@ export EDITOR=vim
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HIST_STAMPS="mm/dd/yyyy"
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-# don't record dupes in history
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_REDUCE_BLANKS
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_VERIFY
-setopt HIST_EXPIRE_DUPS_FIRST
 
 # DISABLE AUTOCORRECTION
 DISABLE_CORRECTION="true"
@@ -29,33 +19,23 @@ autoload -U colors && colors
 export NVM_LAZY_LOAD=true
 # export NVM_NO_USE=true
 
-# antibody dynamic load
-# load oh-my-zsh properly, see https://github.com/getantibody/antibody/issues/218
-# ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
-source <(antibody init)
-# antibody bundle < ~/.antibody.txt
+if [ "$(uname)" = "Darwin" ]; then
+  source /usr/local/share/antigen/antigen.zsh
+else
+  source /usr/share/zsh/scripts/antigen/antigen.zsh
+fi
 
-antibody bundle rupa/z
-antibody bundle djui/alias-tips
-
-antibody bundle robbyrussell/oh-my-zsh folder:lib
-antibody bundle robbyrussell/oh-my-zsh folder:plugins/sudo
-
-antibody bundle zsh-users/zsh-completions
-antibody bundle zsh-users/zsh-autosuggestions
-antibody bundle lukechilds/zsh-nvm
-
-# these should be at last!
-antibody bundle denysdovhan/spaceship-prompt
-# antibody bundle zsh-users/zsh-syntax-highlighting
-antibody bundle zdharma/fast-syntax-highlighting
-antibody bundle zsh-users/zsh-history-substring-search
-
-# antibody static load
-# terminal run 
-# antibody bundle < ~/.antibody.txt > ~/.zsh_plugins.sh
-# to generate file, then zshrc using
-# source ~/.zsh_plugins.sh
+antigen use oh-my-zsh
+antigen bundle sudo
+antigen bundle z
+antigen bundle djui/alias-tips
+antigen bundle lukechilds/zsh-nvm
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zdharma/fast-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search
+antigen theme denysdovhan/spaceship-prompt
+antigen apply
 
 function c256() {
     for k in `seq 0 1`;do 
