@@ -19,6 +19,7 @@ cask "alfred"
 
 # brew
 brew "openssl"
+brew "tmux"
 # brew "screen"
 # brew "grep"
 brew "gnu-sed"
