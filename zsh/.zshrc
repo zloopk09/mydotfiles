@@ -22,7 +22,7 @@ export NVM_LAZY_LOAD=true
 if [ "$(uname)" = "Darwin" ]; then
   source /usr/local/share/antigen/antigen.zsh
 else
-  source /usr/share/zsh/scripts/antigen/antigen.zsh
+  source /usr/share/zsh/share/antigen.zsh
 fi
 
 antigen use oh-my-zsh
