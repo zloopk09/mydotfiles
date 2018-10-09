@@ -41,6 +41,7 @@ trash-cli
 sed
 okular
 highlight
+tmux
 ttf-anonymous-pro
 ttf-dejavu
 ttf-font-awesome
