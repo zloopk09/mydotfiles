@@ -9,8 +9,8 @@ env: mac or manjaro(ArchLinux)
 
 Reference
 -----------------
-https://github.com/webpro/awesome-dotfiles
-https://dotfiles.github.io/
+- https://github.com/webpro/awesome-dotfiles
+- https://dotfiles.github.io/
 
 screenshots
 -----------------
