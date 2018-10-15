@@ -62,28 +62,39 @@
 # see https://github.com/SixArm/sixarm_git_gitconfig/blob/master/gitconfig.d/alias.txt
 [alias]
     a = add
-    b = branch
-    c = commit
+    br = branch
+    c = commit -v
+    ca = commit -a -v
+    cm = commit -m
+    cam = commit -a -m
     d = diff
-    f = fetch
+    dc = diff --cached
+    f = fetch --prune
     g = grep
     l = log
-    m = merge
-    me = merge --no-commit --no-ff
+    cf = config
+    re = remote
+    mr = merge
+    mrn = merge --no-ff
+    mrnn = merge --no-commit --no-ff
     co = checkout
+    cb = checkout -b
     pl = pull --prune
+    plr = pull --rebase
     ph = push
-    ss = status --short
+    ss = status --short --branch
     st = status
     cl = clone
     cp = cherry-pick
+    rb = rebase
     rbc = rebase --continue
     rvnc = revert --no-commit
     unadd = reset HEAD
     uncommit = reset --soft HEAD^
     undo = reset --hard
-    sm = submodule
-    smu = submodule update --init --recursive
+    sb = submodule
+    str = subtree
+    sbu = submodule update --init --recursive
     lgs = log --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset'
     lgl = log --all --graph --decorate --stat
     als = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'

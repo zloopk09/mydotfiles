@@ -83,17 +83,6 @@ alias rbvg='rbenv global'
 alias rbvl='rbenv local'
 alias rbvs='rbenv shell'
 alias rbvha='rbenv rehash'
-alias ga='git add'
-alias gc='git commit -v'
-alias gcm='g commit -m'
-alias gpl='git pull'
-alias gph='git push'
-alias gd='git diff'
-alias gco='git checkout'
-alias gsb='git submodule'
-alias gst='git subtree'
-alias gsbu="git submodule foreach 'git checkout master; git pull'"
-alias gl="g log --graph --pretty=format:'%Cblue%h%Creset%d %Cgreen%an%Creset: %s %Cblue%ar%Creset'"
 alias mgit="python mgit.py"
 alias gw="./gradlew"
 alias gwb='./gradlew build'
@@ -135,12 +124,12 @@ if [ "$(uname)" = "Darwin" ]; then
   export JAVA_HOME=$JAVA_8_HOME
 
   # rbenv
-  eval "$(rbenv init -)"
+  evgit whatchanged -p --abbrev-commit --pretty = medium
 
-  # misc
-  alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+  # git whatchanged -p --abbrev-commit --pretty = medium
+  algit whatchanged -p --abbrev-commit --pretty = mediumr.menu/Contents/Resources/CGSession -suspend"
   
-else
+elsegit whatchanged -p --abbrev-commit --pretty = medium
   # GNU/Linux
   # copy ssh public key
   alias msshkey="xclip -sel clip < ~/.ssh/id_rsa.pub | echo '=> Public key copied to pasteboard.'"
