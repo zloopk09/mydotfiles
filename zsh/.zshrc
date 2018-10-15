@@ -124,12 +124,12 @@ if [ "$(uname)" = "Darwin" ]; then
   export JAVA_HOME=$JAVA_8_HOME
 
   # rbenv
-  evgit whatchanged -p --abbrev-commit --pretty = medium
+  eval "$(rbenv init -)"
 
-  # git whatchanged -p --abbrev-commit --pretty = medium
-  algit whatchanged -p --abbrev-commit --pretty = mediumr.menu/Contents/Resources/CGSession -suspend"
+  # misc
+  alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
   
-elsegit whatchanged -p --abbrev-commit --pretty = medium
+else
   # GNU/Linux
   # copy ssh public key
   alias msshkey="xclip -sel clip < ~/.ssh/id_rsa.pub | echo '=> Public key copied to pasteboard.'"
