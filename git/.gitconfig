@@ -35,6 +35,7 @@
     whitespace = trailing-space,space-before-tab # 默认设置
     excludesfile = ~/.mydotfiles/git/.global_gitignore
     pager = diff-so-fancy | less --tabs=4 -RFX
+    quotepath = false
 [submodule]
 	fetchJobs = 4 # 跟clone通用
 [apply]
