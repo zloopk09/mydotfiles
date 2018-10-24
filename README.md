@@ -20,3 +20,7 @@ mac
 manjaro
 ![](./screenshots/manjaro1.png)
 ![](./screenshots/manjaro2.png)
+
+
+### todo
+- modify vim config
