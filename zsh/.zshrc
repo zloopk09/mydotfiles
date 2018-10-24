@@ -114,7 +114,7 @@ if [ "$(uname)" = "Darwin" ]; then
 
   # homebrew command-not-found插件
   if brew command command-not-found-init > /dev/null 2>&1; then eval "$(brew command-not-found-init)"; fi
-  alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
+  alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew cask cleanup'
 
   # java环境切换 默认java8
   export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
