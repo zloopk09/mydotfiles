@@ -23,4 +23,6 @@ manjaro
 
 
 ### todo
-- modify vim config
+- vim config
+- update preference.sh
+- tmux config
