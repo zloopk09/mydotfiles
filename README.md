@@ -22,7 +22,3 @@ manjaro
 ![](./screenshots/manjaro2.png)
 
 
-### todo
-- vim config
-- update preference.sh
-- tmux config
