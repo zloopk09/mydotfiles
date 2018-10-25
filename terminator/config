@@ -7,6 +7,23 @@
   title_transmit_bg_color = "#2b303b"
   title_transmit_fg_color = "#a3be8c"
 [keybindings]
+  close_term = <Primary>w
+  close_window = <Primary>q
+  copy = <Primary>c
+  cycle_next = <Primary>bracketright
+  cycle_prev = <Primary>bracketleft
+  go_down = <Primary><Alt>Down
+  go_left = <Primary><Alt>Left
+  go_next = <Primary>bracketright
+  go_prev = <Primary>bracketleft
+  go_right = <Primary><Alt>Right
+  go_up = <Primary><Alt>Up
+  new_tab = <Primary>t
+  next_tab = <Primary>Right
+  paste = <Primary>v
+  prev_tab = <Primary>Left
+  split_horiz = <Primary>d
+  split_vert = <Primary><Shift>d
 [layouts]
   [[default]]
     [[[child1]]]
