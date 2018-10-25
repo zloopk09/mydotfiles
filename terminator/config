@@ -7,8 +7,8 @@
   title_transmit_bg_color = "#2b303b"
   title_transmit_fg_color = "#a3be8c"
 [keybindings]
-  close_term = <Primary>w
-  close_window = <Primary>q
+  close_term = <Alt>w
+  close_window = <Alt>q
   copy = <Primary>c
   cycle_next = <Primary>bracketright
   cycle_prev = <Primary>bracketleft
@@ -22,8 +22,8 @@
   next_tab = <Primary>Right
   paste = <Primary>v
   prev_tab = <Primary>Left
-  split_horiz = <Primary>d
-  split_vert = <Primary><Shift>d
+  split_horiz = <Alt>d
+  split_vert = <Shift><Alt>d
 [layouts]
   [[default]]
     [[[child1]]]
