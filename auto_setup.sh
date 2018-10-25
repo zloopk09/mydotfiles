@@ -370,19 +370,20 @@ rbenv versions
 
 
 echo "=============================================================================="
-echo "==                     step(8/10):config vim with SpaceVim                  =="
+echo "==                     step(8/10):config vim with amix/vimrc.               =="
 echo "=============================================================================="
-if [ -d "$HOME/.SpaceVim" ] ; then
-    ok "SpaceVim has already installed"
-    info "Trying to update SpaceVim"
-    cd "$HOME/.SpaceVim"
-    git pull
+if [ -d "$HOME/.vim_runtime" ] ; then
+    ok "amix/vimrc has already installed"
+    info "Trying to update amix/vimrc"
+    cd "$HOME/.vim_runtime"
+    git pull --rebase
     cd - > /dev/null 2>&1
-    ok "Successfully update SpaceVim"
+    ok "Successfully update amix/vimrc"
 else
-    info  "Installing SpaceVim"
-    curl -sLf https://spacevim.org/cn/install.sh | bash
-    ok "SpaceVim has installed"
+    info  "Installing amix/vimrc"
+    git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+    sh ~/.vim_runtime/install_basic_vimrc.sh
+    ok "amix/vimrc has installed"
     ok "You may need to open vim to install/update plugins"
 fi
 
