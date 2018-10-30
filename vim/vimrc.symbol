@@ -1,0 +1,277 @@
+"==========================================
+" Author:  zloop
+" Email: zloopk09@gmail.com
+" references:
+"       https://gist.github.com/simonista/8703722
+"       https://github.com/wklken/k-vim/blob/master/vimrc
+"       https://github.com/amix/vimrc
+" Sections:
+"       -> Basic Settings
+"       -> Initial Plugins
+"       -> General Settings
+"       -> UI Settings
+"       -> Theme
+"       -> keybindings
+"       -> Plugin Settings
+"==========================================
+
+"==========================================
+" Basic Settings
+"==========================================
+" Don't try to be vi compatible
+set nocompatible
+
+" Helps force plugins to load correctly when it is turned back on below
+filetype off
+
+"==========================================
+" Initial Plugins
+"==========================================
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'tpope/vim-commentary'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/syntastic'
+
+" Initialize plugin system
+call plug#end()
+
+"==========================================
+" General Settings
+"==========================================
+" For plugins to load correctly
+filetype plugin indent on
+
+" Sets how many lines of history VIM has to remember
+set history=1000
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" Pick a leader key
+let mapleader = ','
+" let g:mapleader = ','
+
+" Security
+set modelines=0
+
+" Enable hidden buffers
+set hidden
+
+" Directories for swp files
+set nobackup
+set nowb
+set noswapfile
+
+set fileformats=unix,dos,mac
+
+" Encoding
+set encoding=utf-8
+
+" Whitespace
+set wrap
+set textwidth=79
+set formatoptions=tcqrn1
+set softtabstop=2
+set noshiftround
+
+set autoindent
+set smartindent
+set smarttab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+
+" Rendering
+set ttyfast
+
+" redraw only when we need to.
+set lazyredraw
+
+" Use spaces instead of tabs
+set expandtab
+
+" Be smart when using tabs ;)
+set smarttab
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
+
+" Open new windows below the current window.
+set splitbelow
+" Open new windows right of the current window.
+set splitright
+
+"==========================================
+" UI Settings
+"==========================================
+" Turn on syntax highlighting
+syntax on
+
+"Always show current position
+set ruler
+
+" Show line numbers
+set number
+
+" 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
+set relativenumber number
+au FocusLost * :set norelativenumber number
+au FocusGained * :set relativenumber
+" 插入模式下用绝对行号, 普通模式下用相对
+autocmd InsertEnter * :set norelativenumber number
+autocmd InsertLeave * :set relativenumber
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber number
+  else
+    set relativenumber
+  endif
+endfunc
+nnoremap <C-n> :call NumberToggle()<cr>
+
+set scrolloff=7
+
+set nowrap
+
+" Blink cursor on error instead of beeping (grr)
+set visualbell
+
+" Height of the command bar
+set cmdheight=2
+
+" Turn on the Wild menu
+set wildmenu
+
+" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+"" Status bar
+set laststatus=2
+
+set title
+
+" Last line
+set showmode
+set showcmd
+
+" highlight current line
+set cursorline
+
+"Don't wrap lines
+set nowrap
+"Wrap lines at convenient points
+set linebreak
+
+"==========================================
+" theme
+"==========================================
+
+
+"==========================================
+" keybindings
+"==========================================
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" :W sudo saves the file 
+" (useful for handling the permission-denied error)
+command W w !sudo tee % > /dev/null
+
+"" Split
+noremap <Leader>h :<C-u>split<CR>
+noremap <Leader>v :<C-u>vsplit<CR>
+
+" Move up/down editor lines
+nnoremap j gj
+nnoremap k gk
+
+map <leader><space> :let @/=''<cr> " clear search
+
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove 
+map <leader>t<leader> :tabnext 
+
+" normal模式下切换到确切的tab
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+
+" Move a line of text using ALT+[jk] or Command+[jk] on mac
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+if has("mac") || has("macunix")
+  nmap <D-j> <M-j>
+  nmap <D-k> <M-k>
+  vmap <D-j> <M-j>
+  vmap <D-k> <M-k>
+endif
+
+" Go to home and end using capitalized directions
+noremap H ^
+noremap L $
+
+" Map ; to : and save a million keystrokes 用于快速进入命令行
+nnoremap ; :
+
+"==========================================
+" plugin settings
+"==========================================
+" --- NERDTree ----
+let NERDTreeIgnore=['.DS_Store']
+let NERDTreeShowBookmarks=0         "show bookmarks on startup
+let NERDTreeHighlightCursorline=1   "Highlight the selected entry in the tree
+let NERDTreeShowLineNumbers=0
+let NERDTreeMinimalUI=1
+noremap <leader>nt :NERDTreeToggle<CR>
+
+
+" --- NERDCommenter ---
+let NERDSpaceDelims=1               " space around delimiters
+let NERDRemoveExtraSpaces=1
+let g:NERDCustomDelimiters = {
+    \ 'scss': { 'left': '//' }
+\ }
+
+" --- EasyMotion ---
+let g:EasyMotion_leader_key = '<Leader>m'
+" lets make <leader>F and <leader>f use easymotion by default
+let g:EasyMotion_mapping_f = '<leader>f'
+let g:EasyMotion_mapping_F = '<leader>F'
