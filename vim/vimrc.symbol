@@ -1,10 +1,6 @@
-"==========================================
+"==============WIP=======================
 " Author:  zloop
 " Email: zloopk09@gmail.com
-" references:
-"       https://gist.github.com/simonista/8703722
-"       https://github.com/wklken/k-vim/blob/master/vimrc
-"       https://github.com/amix/vimrc
 " Sections:
 "       -> Basic Settings
 "       -> Initial Plugins
@@ -13,7 +9,7 @@
 "       -> Theme
 "       -> keybindings
 "       -> Plugin Settings
-"==========================================
+"==============WIP=======================
 
 "==========================================
 " Basic Settings
