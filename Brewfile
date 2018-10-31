@@ -75,6 +75,7 @@ cask "snip"
 cask "kap" # 屏幕录制gif
 cask "docker"
 cask "kdiff3"
+cask "aliwangwang"
 cask "tor-browser"
 cask "iterm2"
 cask "launchrocket"
