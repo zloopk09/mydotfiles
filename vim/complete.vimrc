@@ -34,9 +34,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
+Plug 'scrooloose/nerdcommenter'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
@@ -63,7 +66,6 @@ set autoread
 
 " Pick a leader key
 let mapleader = ','
-" let g:mapleader = ','
 
 " Security
 set modelines=0
@@ -73,59 +75,69 @@ set hidden
 
 " Directories for swp files
 set nobackup
-set nowb
 set noswapfile
+set nowb
+" Keep undo history across sessions, by storing in file.
+if has('persistent_undo')
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+endif
 
-set undodir=~/.vim/undodir//
-set undofile
-
+" Use Unix as the standard file type
 set fileformats=unix,dos,mac
 
 " Encoding
 set encoding=utf-8
 
-" Whitespace
-set wrap
-set textwidth=79
-set formatoptions=tcqrn1
-set softtabstop=2
-set noshiftround
+" Make backspace work as you would expect
+set backspace=indent,eol,start  
+set whichwrap+=<,>,h,l
 
-set autoindent
-set smartindent
-set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
-set expandtab
-
-" Rendering
+" Faster redrawing
 set ttyfast
-
 " redraw only when we need to.
 set lazyredraw
 
+set autoindent
+set smartindent
 " Use spaces instead of tabs
 set expandtab
-
-" Be smart when using tabs ;)
+" Be smart when using tabs
 set smarttab
-
 " 1 tab == 4 spaces
 set shiftwidth=4
+set softtabstop=4
 set tabstop=4
+" >> indents to next multiple of 'shiftwidth'
+set shiftround
 
+" Show as much as possible of the last line
+set display+=lastline
 
-" Open new windows below the current window.
-set splitbelow
+" Display tabs and trailing spaces visually
+set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+
 " Open new windows right of the current window.
 set splitright
+" Open new windows below the current window.
+set splitbelow
+
+" For regular expressions turn magic on
+set magic
 
 "==========================================
 " UI Settings
 "==========================================
-" Turn on syntax highlighting
-syntax on
+" Enable syntax highlighting
+syntax enable
+
+set mouse=a 
+set selection=exclusive 
+set selectmode=mouse,key
+
+" highlight matching parenthenesses
+set showmatch
 
 "Always show current position
 set ruler
@@ -133,57 +145,61 @@ set ruler
 " Show line numbers
 set number
 
-" 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
-set relativenumber number
-au FocusLost * :set norelativenumber number
-au FocusGained * :set relativenumber
-" 插入模式下用绝对行号, 普通模式下用相对
-autocmd InsertEnter * :set norelativenumber number
-autocmd InsertLeave * :set relativenumber
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber number
-  else
-    set relativenumber
-  endif
-endfunc
-nnoremap <C-n> :call NumberToggle()<cr>
+" autoscroll when you get within x of boundary
+set scrolloff=6
 
-set scrolloff=7
-
-set nowrap
-
-" Blink cursor on error instead of beeping (grr)
-set visualbell
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
 
 " Height of the command bar
 set cmdheight=2
 
 " Turn on the Wild menu
 set wildmenu
+set wildmode=longest:full,full
+set wildignore=*.o,*.obj,*~,*.pyc "stuff to ignore when tab completing
+set wildignore+=*DS_Store*
+set wildignore+=*.png,*.jpg,*.gif
 
 " Searching
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+set nowrapscan
 
-"" Status bar
-set laststatus=2
-
+" change the terminal's title
 set title
 
-" Last line
+" Always show statusline
+set laststatus=2
+" Show current mode in command-line.
 set showmode
+" Show already typed keys when more are expected.
 set showcmd
 
 " highlight current line
 set cursorline
+set nocursorcolumn
+
+" set iskeyword+=_,$,@,%,#,-
 
 "Don't wrap lines
-set nowrap
+set wrap
 "Wrap lines at convenient points
 set linebreak
+set showbreak=↳
+fun! ToggleShowBreak()
+  if &showbreak == ''
+    set showbreak=↳
+  else
+    set showbreak=
+  endif
+endfun
+nmap <leader>b :call ToggleShowBreak()<CR>
 
 "==========================================
 " theme
@@ -198,11 +214,18 @@ nmap <leader>w :w!<cr>
 
 nmap <Leader>q :q<CR>
 
+" Fast reload vimrc
+map <leader>s :source ~/.vimrc<cr>
+
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
-"" Split
+" Fast adjust shift width
+map <leader>s2 :set shiftwidth=2<cr>
+map <leader>s4 :set shiftwidth=4<cr>
+
+" Split
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
@@ -210,7 +233,15 @@ noremap <Leader>v :<C-u>vsplit<CR>
 nnoremap j gj
 nnoremap k gk
 
-map <leader><space> :let @/=''<cr> " clear search
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+" Switch CWD to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Return to last edit position when opening files (You want this!)
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
