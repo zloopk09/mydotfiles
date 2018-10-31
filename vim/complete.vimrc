@@ -33,11 +33,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
@@ -46,7 +43,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'Yggdroot/indentLine'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/syntastic'
 Plug 'skywind3000/asyncrun.vim'
 
 " Initialize plugin system
@@ -192,14 +188,6 @@ set wrap
 "Wrap lines at convenient points
 set linebreak
 set showbreak=↳
-fun! ToggleShowBreak()
-  if &showbreak == ''
-    set showbreak=↳
-  else
-    set showbreak=
-  endif
-endfun
-nmap <leader>b :call ToggleShowBreak()<CR>
 
 "==========================================
 " theme
@@ -214,16 +202,18 @@ nmap <leader>w :w!<cr>
 
 nmap <Leader>q :q<CR>
 
-" Fast reload vimrc
-map <leader>s :source ~/.vimrc<cr>
+fun! ToggleShowBreak()
+  if &showbreak == ''
+    set showbreak=↳
+  else
+    set showbreak=
+  endif
+endfun
+nmap <leader>b :call ToggleShowBreak()<CR>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
-
-" Fast adjust shift width
-map <leader>s2 :set shiftwidth=2<cr>
-map <leader>s4 :set shiftwidth=4<cr>
 
 " Split
 noremap <Leader>h :<C-u>split<CR>
@@ -233,18 +223,36 @@ noremap <Leader>v :<C-u>vsplit<CR>
 nnoremap j gj
 nnoremap k gk
 
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+" Go to home and end using capitalized directions
+noremap H ^
+noremap L $
 
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-" Return to last edit position when opening files (You want this!)
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+" Map ; to : and save a million keystrokes 用于快速进入命令行
+nnoremap ; :
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
+
+" F2 行号开关
+function! HideNumber()
+  if(&relativenumber == &number)
+    set relativenumber! number!
+  elseif(&number)
+    set number!
+  else
+    set relativenumber!
+  endif
+  set number?
+endfunc
+nnoremap <F2> :call HideNumber()<CR>
+
+" F3 显示可打印字符开关
+nnoremap <F3> :set list! list?<CR>
+" F4 换行开关
+nnoremap <F4> :set wrap! wrap?<CR>
+
+" Return to last edit position when opening files (You want this!)
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -258,18 +266,12 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
 map <leader>t<leader> :tabnext 
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-" normal模式下切换到确切的tab
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 :tablast<cr>
+" Switch CWD to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
@@ -283,12 +285,6 @@ if has("mac") || has("macunix")
   vmap <D-k> <M-k>
 endif
 
-" Go to home and end using capitalized directions
-noremap H ^
-noremap L $
-
-" Map ; to : and save a million keystrokes 用于快速进入命令行
-nnoremap ; :
 
 "==========================================
 " Functions
@@ -322,24 +318,7 @@ function! NumberToggle()
 endfunc
 nnoremap <C-n> :call NumberToggle()<cr>
 
-" F2 行号开关，用于鼠标复制代码用
-" 为方便复制，用<F2>开启/关闭行号显示:
-function! HideNumber()
-  if(&relativenumber == &number)
-    set relativenumber! number!
-  elseif(&number)
-    set number!
-  else
-    set relativenumber!
-  endif
-  set number?
-endfunc
-nnoremap <F2> :call HideNumber()<CR>
 
-" F3 显示可打印字符开关
-nnoremap <F3> :set list! list?<CR>
-" F4 换行开关
-nnoremap <F4> :set wrap! wrap?<CR>
 
 "==========================================
 " plugin settings
