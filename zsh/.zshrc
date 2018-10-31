@@ -69,6 +69,7 @@ alias pc="proxychains4"
 alias zshrc="vim ~/.zshrc"
 alias szshrc="source ~/.zshrc"
 alias gitconfig="vim ~/.gitconfig"
+alias vimrc="vim ~/.vimrc"
 alias ll='ls -la'
 alias vi="vim"
 alias v="vim"
