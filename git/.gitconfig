@@ -63,7 +63,7 @@
 # see https://github.com/SixArm/sixarm_git_gitconfig/blob/master/gitconfig.d/alias.txt
 [alias]
     a = add
-    br = branch
+    br = branch -v
     c = commit -v
     ca = commit -a -v
     cm = commit -m
@@ -98,6 +98,13 @@
     sbu = submodule update --init --recursive
     lgs = log --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset'
     lgl = log --all --graph --decorate --stat
+    # https://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit
+    # 显示本地分支最后的提交记录
+    lastest = !git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)'
+    # via http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
+    # 快速用stash保存一份snapshot修改
+    snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+    snapshots = !git stash list --grep snapshot
     als = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
 # 放在最后 覆盖之前的
 [includeIf "gitdir:~/mrepo/github/"]
