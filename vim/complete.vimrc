@@ -327,12 +327,17 @@ nnoremap <C-n> :call NumberToggle()<cr>
 " plugin settings
 "==========================================
 " --- NERDTree ----
-let NERDTreeIgnore=['.DS_Store']
+let g:NERDTreeWinPos = "left"
 let NERDTreeShowBookmarks=0         "show bookmarks on startup
 let NERDTreeHighlightCursorline=1   "Highlight the selected entry in the tree
 let NERDTreeShowLineNumbers=0
 let NERDTreeMinimalUI=1
-noremap <leader>nt :NERDTreeToggle<CR>
+let NERDTreeShowHidden=0
+let NERDTreeIgnore=['.DS_Store']
+let g:NERDTreeWinSize=35
+map <leader>nn :NERDTreeToggle<cr>
+map <leader>nb :NERDTreeFromBookmark<Space>
+map <leader>nf :NERDTreeFind<cr>
 
 
 " --- NERDCommenter ---
