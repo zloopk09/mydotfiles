@@ -165,7 +165,7 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-set nowrapscan
+set wrapscan
 
 " change the terminal's title
 set title
