@@ -30,7 +30,8 @@ filetype off
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
-Plug 'morhetz/gruvbox'
+Plug 'connorholyday/vim-snazzy'
+" Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -195,7 +196,10 @@ set showbreak=↳
 "==========================================
 " theme
 "==========================================
-colorscheme gruvbox
+set background=dark
+" colorscheme gruvbox
+colorscheme snazzy
+
 
 "==========================================
 " keybindings
