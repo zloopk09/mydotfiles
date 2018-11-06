@@ -387,6 +387,11 @@ else
     ok "You may need to open vim to install/update plugins"
 fi
 
+# curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+# 	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# vim +'PlugInstall --sync' +qa
+# vim +'PlugUpdate' +qa
+
 
 echo "=============================================================================="
 echo "==                     step(9/10):vscode                                    =="
