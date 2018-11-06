@@ -34,17 +34,16 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
+Plug 'mbbill/undotree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'itchyny/lightline.vim'
-Plug 'junegunn/vim-easy-align'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-fugitive'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'Lokaltog/vim-easymotion'
+Plug 'junegunn/vim-easy-align'
 Plug 'Yggdroot/indentLine'
-Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+" Plug 'Lokaltog/vim-easymotion'
 
 " Initialize plugin system
 call plug#end()
@@ -66,6 +65,9 @@ let mapleader = ','
 
 " Security
 set modelines=0
+
+" share system clipboard
+set clipboard=unnamed
 
 " Enable hidden buffers
 set hidden
@@ -194,6 +196,8 @@ set showbreak=↳
 "==========================================
 " theme
 "==========================================
+set termguicolors
+set guifont=Source\ Code\ Pro\ 15
 set background=dark
 colorscheme gruvbox
 " colorscheme snazzy
@@ -334,7 +338,7 @@ let NERDTreeShowBookmarks=0         "show bookmarks on startup
 let NERDTreeHighlightCursorline=1   "Highlight the selected entry in the tree
 let NERDTreeShowLineNumbers=0
 let NERDTreeMinimalUI=1
-let NERDTreeShowHidden=0
+let NERDTreeShowHidden=1
 let NERDTreeIgnore=['.DS_Store']
 let g:NERDTreeWinSize=35
 map <F5> :NERDTreeToggle<cr>
@@ -367,8 +371,33 @@ let g:NERDToggleCheckAllLines = 1
 " --- vim-airline-theme ---
 
 
+" --- ctrlpvim/ctrlp.vim ---
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+map <leader>f :CtrlPMRU<CR>
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
+    \ }
+let g:ctrlp_working_path_mode=0
+let g:ctrlp_match_window_bottom=1
+let g:ctrlp_max_height=15
+let g:ctrlp_match_window_reversed=0
+let g:ctrlp_mruf_max=500
+let g:ctrlp_follow_symlinks=1
+
+" --- bronson/vim-trailing-whitespace ---
+map <leader><space> :FixWhitespace<cr>
+
 " --- junegunn/vim-easy-align ---
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
+vmap <Leader>a <Plug>(EasyAlign)
+nmap <Leader>a <Plug>(EasyAlign)
+if !exists('g:easy_align_delimiters')
+  let g:easy_align_delimiters = {}
+endif
+let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String'] }
+
+" --- mbbill/undotree ---
+nnoremap <F6> :UndotreeToggle<cr>
+
+" --- Yggdroot/indentLine ---
