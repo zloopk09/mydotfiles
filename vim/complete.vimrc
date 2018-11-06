@@ -1,4 +1,4 @@
-"==============WIP=======================
+"========================================
 " Author:  zloop
 " Email: zloopk09@gmail.com
 " Sections:
@@ -30,20 +30,29 @@ filetype off
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
+
+" UI
 " Plug 'connorholyday/vim-snazzy'
 Plug 'morhetz/gruvbox'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
-Plug 'mbbill/undotree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'itchyny/lightline.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'Yggdroot/indentLine'
+
+" file
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ctrlpvim/ctrlp.vim'
+
+" edit
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'junegunn/vim-easy-align'
-Plug 'Yggdroot/indentLine'
 " Plug 'Lokaltog/vim-easymotion'
+Plug 'Raimondi/delimitMate'
+
 
 " Initialize plugin system
 call plug#end()
@@ -146,7 +155,7 @@ set ruler
 set number
 
 " autoscroll when you get within x of boundary
-set scrolloff=6
+set scrolloff=5
 
 " No annoying sound on errors
 set noerrorbells
@@ -160,9 +169,20 @@ set cmdheight=2
 " Turn on the Wild menu
 set wildmenu
 set wildmode=longest:full,full
-set wildignore=*.o,*.obj,*~,*.pyc "stuff to ignore when tab completing
-set wildignore+=*DS_Store*
-set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX bullshit
+set wildignore+=*.luac                           " Lua byte code
+set wildignore+=migrations                       " Django migrations
+set wildignore+=go/pkg                       " Go static files
+set wildignore+=go/bin                       " Go bin files
+set wildignore+=go/bin-vagrant               " Go bin-vagrant files
+set wildignore+=*.pyc                            " Python byte code
+set wildignore+=*.orig                           " Merge resolution files
 
 " Searching
 set hlsearch
@@ -189,6 +209,8 @@ set nocursorcolumn
 
 "Don't wrap lines
 set wrap
+" set textwidth=79
+set formatoptions=qrn1
 "Wrap lines at convenient points
 set linebreak
 set showbreak=↳
@@ -239,8 +261,18 @@ noremap L $
 " Map ; to : and save a million keystrokes 用于快速进入命令行
 nnoremap ; :
 
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
+" Remove search highlight
+nnoremap <leader><space> :nohlsearch<CR>
+
+" Buffer prev/next
+nnoremap <C-x> :bnext<CR>
+nnoremap <C-z> :bprev<CR>
+
+" Center the screen
+nnoremap <space> zz
+
+" Act like D and C
+nnoremap Y yw
 
 " F2 行号开关
 function! HideNumber()
@@ -333,42 +365,27 @@ nnoremap <C-n> :call NumberToggle()<cr>
 " plugin settings
 "==========================================
 " --- NERDTree ----
-let g:NERDTreeWinPos = "left"
-let NERDTreeShowBookmarks=0         "show bookmarks on startup
-let NERDTreeHighlightCursorline=1   "Highlight the selected entry in the tree
-let NERDTreeShowLineNumbers=0
-let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['.DS_Store']
-let g:NERDTreeWinSize=35
+let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store']
 map <F5> :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
 
 
 " --- NERDCommenter ---
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-" Set a language to use its alternate delimiters by default
-let g:NERDAltDelims_java = 1
-" Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
-let g:NERDToggleCheckAllLines = 1
+let g:NERDSpaceDelims=1
+
 
 " --- nerdtree-git-plugin ---
+"
+
 
 " --- vim-airline ---
+"
+
 
 " --- vim-airline-theme ---
+"
 
 
 " --- ctrlpvim/ctrlp.vim ---
@@ -401,3 +418,7 @@ let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String']
 nnoremap <F6> :UndotreeToggle<cr>
 
 " --- Yggdroot/indentLine ---
+let g:indentLine_color_term = 238
+
+" --- delimitMate ---
+"
