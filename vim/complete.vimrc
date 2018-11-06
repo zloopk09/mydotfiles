@@ -30,24 +30,21 @@ filetype off
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
-Plug 'connorholyday/vim-snazzy'
-" Plug 'morhetz/gruvbox'
+" Plug 'connorholyday/vim-snazzy'
+Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'itchyny/lightline.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'majutsushi/tagbar'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'junegunn/vim-easy-align'
 Plug 'Yggdroot/indentLine'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'skywind3000/asyncrun.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -131,6 +128,7 @@ set magic
 "==========================================
 " Enable syntax highlighting
 syntax enable
+syntax on
 
 set mouse=a 
 set selection=exclusive 
@@ -197,8 +195,8 @@ set showbreak=↳
 " theme
 "==========================================
 set background=dark
-" colorscheme gruvbox
-colorscheme snazzy
+colorscheme gruvbox
+" colorscheme snazzy
 
 
 "==========================================
@@ -339,20 +337,38 @@ let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=0
 let NERDTreeIgnore=['.DS_Store']
 let g:NERDTreeWinSize=35
-map <leader>nn :NERDTreeToggle<cr>
+map <F5> :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
 
 
 " --- NERDCommenter ---
-let NERDSpaceDelims=1               " space around delimiters
-let NERDRemoveExtraSpaces=1
-let g:NERDCustomDelimiters = {
-    \ 'scss': { 'left': '//' }
-\ }
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
 
-" --- EasyMotion ---
-let g:EasyMotion_leader_key = '<Leader>m'
-" lets make <leader>F and <leader>f use easymotion by default
-let g:EasyMotion_mapping_f = '<leader>f'
-let g:EasyMotion_mapping_F = '<leader>F'
+" --- nerdtree-git-plugin ---
+
+" --- vim-airline ---
+
+" --- vim-airline-theme ---
+
+
+" --- junegunn/vim-easy-align ---
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
