@@ -54,6 +54,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'junegunn/vim-easy-align'
 " Plug 'Lokaltog/vim-easymotion'
 Plug 'Raimondi/delimitMate'
+" Plug 'vim-syntastic/syntastic'
 
 
 " Initialize plugin system
@@ -89,8 +90,8 @@ set noswapfile
 set nowb
 " Keep undo history across sessions, by storing in file.
 if has('persistent_undo')
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
+  silent !mkdir ~/.vim/undodir > /dev/null 2>&1
+  set undodir=~/.vim/undodir
   set undofile
 endif
 
@@ -99,9 +100,6 @@ set fileformats=unix,dos,mac
 
 " Encoding
 set encoding=utf-8
-
-" 让配置变更立即生效
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " Make backspace work as you would expect
 set backspace=indent,eol,start  
@@ -122,7 +120,7 @@ set smarttab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-" >> indents to next multiple of 'shiftwidth'
+" indents to next multiple of 'shiftwidth'
 set shiftround
 
 " Show as much as possible of the last line
@@ -160,7 +158,7 @@ set ruler
 set number
 
 " autoscroll when you get within x of boundary
-set scrolloff=5
+set scrolloff=4
 
 " No annoying sound on errors
 set noerrorbells
@@ -227,8 +225,6 @@ set termguicolors
 set guifont=Source\ Code\ Pro\ 15
 set background=dark
 colorscheme gruvbox
-" colorscheme snazzy
-
 
 "==========================================
 " keybindings
@@ -236,21 +232,12 @@ colorscheme gruvbox
 " Fast saving
 nmap <leader>w :w!<cr>
 
-nmap <Leader>q :q<CR>
-nmap <Leader>Q :q!<CR>
-
-fun! ToggleShowBreak()
-  if &showbreak == ''
-    set showbreak=↳
-  else
-    set showbreak=
-  endif
-endfun
-nmap <leader>b :call ToggleShowBreak()<CR>
-
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
+
+" Fast quit
+nmap <Leader>q :q<CR>
 
 " Split
 noremap <Leader>h :<C-u>split<CR>
@@ -273,38 +260,19 @@ nnoremap <leader><space> :nohlsearch<CR>
 " Buffer prev/next
 nnoremap <C-x> :bnext<CR>
 nnoremap <C-z> :bprev<CR>
+" map <leader>l :bnext<cr>
+" map <leader>h :bprevious<cr>
 
 " Center the screen
 nnoremap <space> zz
 
 " Act like D and C
-nnoremap Y yw
+" nnoremap Y yw
 
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <Leader>y "+y
 " 设置快捷键将系统剪贴板内容粘贴至 vim
 nmap <Leader>p "+p
-
-" F2 行号开关
-function! HideNumber()
-  if(&relativenumber == &number)
-    set relativenumber! number!
-  elseif(&number)
-    set number!
-  else
-    set relativenumber!
-  endif
-  set number?
-endfunc
-nnoremap <F2> :call HideNumber()<CR>
-
-" F3 显示可打印字符开关
-nnoremap <F3> :set list! list?<CR>
-" F4 换行开关
-nnoremap <F4> :set wrap! wrap?<CR>
-
-" Return to last edit position when opening files (You want this!)
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -337,22 +305,30 @@ if has("mac") || has("macunix")
   vmap <D-k> <M-k>
 endif
 
+" F4 换行开关
+nnoremap <F4> :set wrap! wrap?<CR>
+
+" F8 显示可打印字符开关
+nnoremap <F8> :set list! list?<CR>
 
 "==========================================
 " Functions
 "==========================================
-" 代码折叠自定义快捷键 <leader>zz
-let g:FoldMethod = 0
-map <leader>zz :call ToggleFold()<cr>
-fun! ToggleFold()
-    if g:FoldMethod == 0
-        exe "normal! zM"
-        let g:FoldMethod = 1
-    else
-        exe "normal! zR"
-        let g:FoldMethod = 0
-    endif
-endfun
+" Return to last edit position when opening files (You want this!)
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" F2 行号开关
+function! HideNumber()
+  if(&relativenumber == &number)
+    set relativenumber! number!
+  elseif(&number)
+    set number!
+  else
+    set relativenumber!
+  endif
+  set number?
+endfunc
+nnoremap <F2> :call HideNumber()<CR>
 
 " 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
 set relativenumber number
@@ -368,9 +344,38 @@ function! NumberToggle()
     set relativenumber
   endif
 endfunc
-nnoremap <C-n> :call NumberToggle()<cr>
+" F3 相对绝对行号切换
+nnoremap <F3> :call NumberToggle()<CR>
 
+" Delete trailing white space on save, useful for some filetypes ;)
+fun! CleanExtraSpaces()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    silent! %s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfun
+if has("autocmd")
+    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+endif
 
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+    let l:pattern = escape(@", "\\/.*'$^~[]")
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+    if a:direction == 'gv'
+        call CmdLine("Ack '" . l:pattern . "' " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    endif
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 "==========================================
 " plugin settings
@@ -379,33 +384,36 @@ nnoremap <C-n> :call NumberToggle()<cr>
 " let g:nerdtree_tabs_open_on_console_startup = 0
 " let g:nerdtree_tabs_open_on_gui_startup = 0
 let NERDTreeShowHidden=1
+let g:NERDTreeWinSize=35
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store']
+" F5 开关
 map <F5> :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
 
-
 " --- NERDCommenter ---
 let g:NERDSpaceDelims=1
 
+" --- majutsushi/tagbar ---
+" F6 开关
+nmap <F6> :TagbarToggle<CR>
+" 启动时自动focus
+let g:tagbar_autofocus = 1
 
-" --- nerdtree-git-plugin ---
-"
-
+" --- mbbill/undotree ---
+" F7 开关
+nnoremap <F7> :UndotreeToggle<cr>
 
 " --- vim-airline ---
-"
-
-
 " --- vim-airline-theme ---
 " let g:airline_theme='gruvbox'
-
 
 " --- ctrlpvim/ctrlp.vim ---
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
-map <leader>f :CtrlPMRU<CR>
+map <leader>m :CtrlPMRU<CR>
+map <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
     \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
@@ -428,19 +436,9 @@ if !exists('g:easy_align_delimiters')
 endif
 let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String'] }
 
-" --- mbbill/undotree ---
-nnoremap <F6> :UndotreeToggle<cr>
-
 " --- Yggdroot/indentLine ---
 let g:indentLine_color_term = 238
 
-" --- delimitMate ---
-"
-
-" --- majutsushi/tagbar ---
-nmap <F9> :TagbarToggle<CR>
-" 启动时自动focus
-let g:tagbar_autofocus = 1
-
 " --- luochen1990/rainbow ---
-let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+"0 if you want to enable it later via :RainbowToggle
+let g:rainbow_active = 1
