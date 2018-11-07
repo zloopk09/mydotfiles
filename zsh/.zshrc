@@ -8,6 +8,12 @@ export EDITOR=vim
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HIST_STAMPS="mm/dd/yyyy"
+setopt HIST_IGNORE_ALL_DUPS
+
+# default in oh my zsh 
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/history.zsh
+# HISTSIZE=50000
+# SAVEHIST=10000
 
 # DISABLE AUTOCORRECTION
 DISABLE_CORRECTION="true"
