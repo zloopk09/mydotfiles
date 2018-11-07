@@ -39,6 +39,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
+Plug 'majutsushi/tagbar'
+Plug 'luochen1990/rainbow'
 
 " file
 Plug 'scrooloose/nerdtree'
@@ -97,6 +99,9 @@ set fileformats=unix,dos,mac
 
 " Encoding
 set encoding=utf-8
+
+" 让配置变更立即生效
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " Make backspace work as you would expect
 set backspace=indent,eol,start  
@@ -232,6 +237,7 @@ colorscheme gruvbox
 nmap <leader>w :w!<cr>
 
 nmap <Leader>q :q<CR>
+nmap <Leader>Q :q!<CR>
 
 fun! ToggleShowBreak()
   if &showbreak == ''
@@ -255,8 +261,8 @@ nnoremap j gj
 nnoremap k gk
 
 " Go to home and end using capitalized directions
-noremap H ^
-noremap L $
+noremap 1 ^
+noremap 0 $
 
 " Map ; to : and save a million keystrokes 用于快速进入命令行
 nnoremap ; :
@@ -273,6 +279,11 @@ nnoremap <space> zz
 
 " Act like D and C
 nnoremap Y yw
+
+" 设置快捷键将选中文本块复制至系统剪贴板
+vnoremap <Leader>y "+y
+" 设置快捷键将系统剪贴板内容粘贴至 vim
+nmap <Leader>p "+p
 
 " F2 行号开关
 function! HideNumber()
@@ -306,7 +317,7 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+nmap <TAB> :tabn<CR>
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
@@ -365,7 +376,10 @@ nnoremap <C-n> :call NumberToggle()<cr>
 " plugin settings
 "==========================================
 " --- NERDTree ----
+" let g:nerdtree_tabs_open_on_console_startup = 0
+" let g:nerdtree_tabs_open_on_gui_startup = 0
 let NERDTreeShowHidden=1
+let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store']
 map <F5> :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
@@ -385,7 +399,7 @@ let g:NERDSpaceDelims=1
 
 
 " --- vim-airline-theme ---
-"
+" let g:airline_theme='gruvbox'
 
 
 " --- ctrlpvim/ctrlp.vim ---
@@ -404,7 +418,7 @@ let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 
 " --- bronson/vim-trailing-whitespace ---
-map <leader><space> :FixWhitespace<cr>
+map <leader>f :FixWhitespace<cr>
 
 " --- junegunn/vim-easy-align ---
 vmap <Leader>a <Plug>(EasyAlign)
@@ -422,3 +436,11 @@ let g:indentLine_color_term = 238
 
 " --- delimitMate ---
 "
+
+" --- majutsushi/tagbar ---
+nmap <F9> :TagbarToggle<CR>
+" 启动时自动focus
+let g:tagbar_autofocus = 1
+
+" --- luochen1990/rainbow ---
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
