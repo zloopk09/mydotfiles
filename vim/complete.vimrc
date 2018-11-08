@@ -224,7 +224,7 @@ set showbreak=↳
 set termguicolors
 set guifont=Source\ Code\ Pro\ 15
 set background=dark
-colorscheme gruvbox
+:silent! colorscheme gruvbox
 
 "==========================================
 " keybindings

@@ -370,27 +370,19 @@ rbenv versions
 
 
 echo "=============================================================================="
-echo "==                     step(8/10):config vim with amix/vimrc.               =="
+echo "==                     step(8/10):config vim with vim-plug                  =="
 echo "=============================================================================="
-if [ -d "$HOME/.vim_runtime" ] ; then
-    ok "amix/vimrc has already installed"
-    info "Trying to update amix/vimrc"
-    cd "$HOME/.vim_runtime"
-    git pull --rebase
-    cd - > /dev/null 2>&1
-    ok "Successfully update amix/vimrc"
-else
-    info  "Installing amix/vimrc"
-    git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
-    sh ~/.vim_runtime/install_awesome_vimrc.sh
-    ok "amix/vimrc has installed"
-    ok "You may need to open vim to install/update plugins"
-fi
-
-# curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-# 	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-# vim +'PlugInstall --sync' +qa
-# vim +'PlugUpdate' +qa
+info "link config files"
+makelink "$DOTFILES/vim/complete.vimrc" ~/.vimrc
+ok "done"
+info "install vim-plug"
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+ok "done"
+info "install/update vim plugin"
+vim +'PlugInstall --sync' +qa
+vim +'PlugUpdate' +qa
+ok "done"
 
 
 echo "=============================================================================="
