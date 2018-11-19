@@ -43,7 +43,10 @@ brew "m-cli"
 brew "vim", args: ['with-lua', 'with-override-system-vi']
 brew "coreutils"
 # brew "moreutils"
+brew "apktool"
 brew "dex2jar"
+brew "smali"
+brew "jadx"
 brew "wget"
 brew "git-flow"
 brew "hub" # 可以替换git命令的封装工具
@@ -76,6 +79,7 @@ cask "snip"
 cask "kap" # 屏幕录制gif
 cask "docker"
 cask "kdiff3"
+cask "jd-gui"
 cask "aliwangwang"
 cask "tor-browser"
 cask "iterm2"

@@ -5,6 +5,8 @@ android-apktool
 android-studio
 android-tools
 android-udev
+smali
+jadx
 noto-fonts-cjk
 wqy-bitmapfont
 wqy-microhei
