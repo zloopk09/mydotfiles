@@ -66,6 +66,7 @@ fi
 export REPO_URL='https://github.com/zloopk09/git-repo-mirror'
 
 # alias
+alias uignore="git rm -r --cached . && git add ."
 alias ls="exa"
 alias py2="source activate basicPy27"
 alias py3="source activate basicPy36"
