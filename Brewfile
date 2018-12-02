@@ -76,6 +76,7 @@ brew "proxychains-ng"
 
 # cask
 cask "snip"
+cask "ao"
 cask "kap" # 屏幕录制gif
 cask "docker"
 cask "kdiff3"
