@@ -75,7 +75,8 @@ brew "proxychains-ng"
 # brew "kotlin"
 
 # cask
-cask "snip"
+# cask "snip"
+cask "snipaste"
 cask "ao"
 cask "kap" # 屏幕录制gif
 cask "docker"
