@@ -92,6 +92,7 @@ alias rbvl='rbenv local'
 alias rbvs='rbenv shell'
 alias rbvha='rbenv rehash'
 alias mg="python mgit.py"
+alias gd="gradle"
 alias gw="./gradlew"
 alias gwb='./gradlew build'
 alias gwc='./gradlew clean'
