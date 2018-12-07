@@ -73,6 +73,7 @@ brew "ffmpeg"
 brew "colordiff"
 brew "proxychains-ng"
 brew "scrcpy"
+brew "pidcat"
 # brew "kotlin"
 
 # cask

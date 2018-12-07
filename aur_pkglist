@@ -2,6 +2,7 @@ antigen-git
 jmeter
 dex2jar
 jd-gui-bin
+pidcat
 rbenv
 charles
 switchhosts-bin
