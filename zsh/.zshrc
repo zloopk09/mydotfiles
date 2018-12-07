@@ -105,6 +105,18 @@ alias drexe="docker exec -i -t"
 drst() { docker stop $(docker ps -a -q); }
 # Bash into running container
 drboard() { docker exec -it $(docker ps -aqf "name=$1") bash; }
+# Fire an intent
+# Usage: startintent https://twitter.com/nisrulz
+alias sintent="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X shell am start $1"
+# Install Apk
+# Usage: apkinstall ~/path/to/apk/App.apk
+alias inapp="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X install -r $1"
+# Uninstall an app
+# Usage: rmapp com.example.demoapp
+alias rmapp="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X uninstall $1"
+# Clear all data of an app
+# Usage: clearapp com.example.demoapp
+alias clearrapp="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X shell pm clear $1"
 
 eval $(thefuck --alias FUCK)
 eval $(thefuck --alias fuck)
