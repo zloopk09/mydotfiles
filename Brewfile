@@ -72,6 +72,7 @@ brew "imagemagick", args: ['--with-webp']
 brew "ffmpeg"
 brew "colordiff"
 brew "proxychains-ng"
+brew "scrcpy"
 # brew "kotlin"
 
 # cask
