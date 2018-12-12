@@ -80,6 +80,7 @@ brew "pidcat"
 # cask "snip"
 cask "snipaste"
 cask "ao"
+cask "evernote"
 cask "kap" # 屏幕录制gif
 cask "docker"
 cask "kdiff3"
