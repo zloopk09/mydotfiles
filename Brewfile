@@ -80,6 +80,7 @@ brew "pidcat"
 # cask "snip"
 cask "snipaste"
 cask "ao"
+cask "rcdefaultapp"
 cask "simplenote"
 cask "jumpcut"
 cask "zotero"
@@ -167,6 +168,7 @@ mas "Pages", id: 409201541
 mas "QQ", id: 451108668
 mas "Numbers", id: 409203825
 mas "NeteaseMusic", id: 944848654
+mas "PDFNut", id: 588109295
 
 
 #
@@ -175,6 +177,7 @@ mas "NeteaseMusic", id: 944848654
 # navicat
 # charles
 # dash
+# sip
 # Pixelmator
 # Mindnode
 # sketch
