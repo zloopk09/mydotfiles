@@ -182,6 +182,8 @@ mas "PDFNut", id: 588109295
 # Pixelmator
 # Mindnode
 # sketch
+# omnioutliner
+# omniplan
 # anyconnection
 # intelliJ IDEA
 # 
