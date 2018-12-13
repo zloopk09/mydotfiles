@@ -80,7 +80,7 @@ brew "pidcat"
 # cask "snip"
 cask "snipaste"
 cask "ao"
-cask "evernote"
+cask "simplenote"
 cask "jumpcut"
 cask "zotero"
 cask "kap" # 屏幕录制gif
