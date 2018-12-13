@@ -96,6 +96,7 @@ alias gd="gradle"
 alias gw="./gradlew"
 alias gwb='./gradlew build'
 alias gwc='./gradlew clean'
+alias gwd='./gradlew --profile --recompile-scripts --offline --rerun-tasks'
 alias drps="docker ps" # -a -q
 alias drimg="docker images"
 alias drrd="docker run -d -P"
