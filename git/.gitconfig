@@ -67,6 +67,7 @@
     c = commit -v
     ca = commit -a -v
     cm = commit -m
+    cmu = commit -m 'update'
     cam = commit -a -m
     d = diff
     dc = diff --cached
@@ -105,7 +106,7 @@
     # 快速用stash保存一份snapshot修改
     snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
     snapshots = !git stash list --grep snapshot
-    als = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+    alias = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
 # 放在最后 覆盖之前的
 [includeIf "gitdir:~/mrepo/github/"]
     path = ~/mrepo/github/.gitconfig
