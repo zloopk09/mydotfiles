@@ -170,16 +170,14 @@ mas "NeteaseMusic", id: 944848654
 
 
 #
-# SpechtLite
-# FileZilla
-# picgo-appimage ipic
+# picgo
 # bartender
 # navicat
-# omni
+# charles
 # dash
-# xmind
 # Pixelmator
 # Mindnode
 # sketch
 # anyconnection
+# intelliJ IDEA
 # 
