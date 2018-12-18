@@ -83,7 +83,6 @@ cask "ao"
 cask "youdaodict"
 cask "rcdefaultapp"
 cask "simplenote"
-cask "evernote"
 cask "jumpcut"
 cask "zotero"
 cask "kap" # 屏幕录制gif
