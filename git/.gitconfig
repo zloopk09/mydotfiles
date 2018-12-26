@@ -87,7 +87,7 @@
     ss = status --short --branch
     st = status
     cl = clone
-    cp = cherry-pick
+    ch = cherry-pick
     rb = rebase
     rbc = rebase --continue
     rvnc = revert --no-commit
