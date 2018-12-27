@@ -162,6 +162,7 @@ else
   alias ss="export ALL_PROXY=socks5://127.0.0.1:1080"
   alias unss="unset ALL_PROXY"
   alias sysu="sudo pacman -Syu --noconfirm"
+  alias sysuf="sudo pacman -Syu --overwrite='*'"
   alias opn="nautilus -s ."
 
   # rbenv
