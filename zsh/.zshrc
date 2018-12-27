@@ -163,6 +163,7 @@ else
   alias unss="unset ALL_PROXY"
   alias sysu="sudo pacman -Syu --noconfirm"
   alias sysuf="sudo pacman -Syu --overwrite='*'"
+  alias tvon="teamviewer --daemon start"
   alias opn="nautilus -s ."
 
   # rbenv
