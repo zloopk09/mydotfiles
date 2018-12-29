@@ -127,7 +127,7 @@ brew "gradle"
 brew "maven"
 cask "postman"
 cask "skype"
-cask "intellij-idea-ce"
+cask "intellij-idea"
 cask "gimp"
 cask "tunnelblick"
 cask "the-unarchiver"
@@ -173,12 +173,10 @@ mas "Numbers", id: 409203825
 mas "NeteaseMusic", id: 944848654
 mas "PDFNut", id: 588109295
 
-
 #
 # picgo
 # bartender
 # navicat
-# charles
 # dash
 # sip
 # Pixelmator
@@ -188,5 +186,4 @@ mas "PDFNut", id: 588109295
 # omnioutliner
 # omniplan
 # anyconnection
-# intelliJ IDEA
 # 
