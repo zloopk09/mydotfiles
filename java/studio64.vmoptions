@@ -1,21 +1,30 @@
+# custom IntelliJ IDEA VM options
 -server
 -Xms2048m
 -Xmx3072m
--XX:MaxPermSize=2048m
--XX:ReservedCodeCacheSize=1024m
 -XX:MetaspaceSize=1024m
+-XX:MaxMetaspaceSize=1024m
+-XX:ReservedCodeCacheSize=1024m
+-XX:SoftRefLRUPolicyMSPerMB=50
+
 -XX:+UseCompressedOops
 -XX:+UseConcMarkSweepGC
--XX:SoftRefLRUPolicyMSPerMB=50
+-XX:+UseParNewGC
+-XX:+CMSParallelRemarkEnabled
+-XX:CMSInitiatingOccupancyFraction=75
+-XX:+UseCMSInitiatingOccupancyOnly
 
 -Dfile.encoding=UTF-8
 
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:-OmitStackTraceInFastThrow
+
+-ea
+-Xverify:none
 -Dsun.io.useCanonCaches=false
 -Djava.net.preferIPv4Stack=true
+-Djdk.http.auth.tunneling.disabledSchemes=""
 -Djna.nosys=true
 -Djna.boot.library.path=
-
--da
--Xverify:none
--Dawt.useSystemAAFontSettings=lcd
+-Dawt.useSystemAAFontSettings=on
 -Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine
