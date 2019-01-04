@@ -48,7 +48,7 @@
 [push]
 	default = simple
 [pull]
-	# rebase = true # 强制开启rebase
+	rebase = true # 强制开启rebase
 [merge]
 	ff = false
 [merge]
