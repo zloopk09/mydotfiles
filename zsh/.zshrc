@@ -95,7 +95,7 @@ alias mg="python mgit.py"
 alias gd="gradle"
 alias gdd="gradle -Dorg.gradle.daemon=false -Dorg.gradle.debug=true"
 alias gw="./gradlew"
-alias gwp='./gradlew --profile --recompile-scripts --rerun-tasks'
+alias gwr='./gradlew --profile --recompile-scripts --rerun-tasks'
 alias gwd='./gradlew -Dorg.gradle.daemon=false -Dorg.gradle.debug=true'
 alias drps="docker ps" # -a -q
 alias drimg="docker images"
