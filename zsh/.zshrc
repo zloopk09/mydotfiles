@@ -93,10 +93,10 @@ alias rbvs='rbenv shell'
 alias rbvha='rbenv rehash'
 alias mg="python mgit.py"
 alias gd="gradle"
+alias gdd="gradle -Dorg.gradle.daemon=false -Dorg.gradle.debug=true"
 alias gw="./gradlew"
-alias gwb='./gradlew build'
-alias gwc='./gradlew clean'
-alias gwd='./gradlew --profile --recompile-scripts --offline --rerun-tasks'
+alias gwp='./gradlew --profile --recompile-scripts --rerun-tasks'
+alias gwd='./gradlew -Dorg.gradle.daemon=false -Dorg.gradle.debug=true'
 alias drps="docker ps" # -a -q
 alias drimg="docker images"
 alias drrd="docker run -d -P"
