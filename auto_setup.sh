@@ -200,8 +200,6 @@ info "create $HOME/mrepo "
 mkdir -p "$HOME/mrepo"
 info "create $HOME/mrepo/github "
 mkdir -p "$HOME/mrepo/github"
-info "create $HOME/mrepo/bitbucket "
-mkdir -p "$HOME/mrepo/bitbucket"
 ok "working space dir been updated"
 info "linking bin"
 makelink "$DOTFILES"/bin ~/bin
@@ -232,7 +230,6 @@ info "linking global_gitignore"
 makelink "$DOTFILES/git/.global_gitignore" ~/.global_gitignore
 info "linking sub folder gitconfig"
 makelink "$DOTFILES/mrepo/github/.gitconfig" ~/mrepo/github/.gitconfig
-makelink "$DOTFILES/mrepo/bitbucket/.gitconfig" ~/mrepo/bitbucket/.gitconfig
 ok "done"
 
 

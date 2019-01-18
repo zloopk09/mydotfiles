@@ -110,8 +110,6 @@
 # 放在最后 覆盖之前的
 [includeIf "gitdir:~/mrepo/github/"]
     path = ~/mrepo/github/.gitconfig
-[includeIf "gitdir:~/mrepo/bitbucket/"]
-    path = ~/mrepo/bitbucket/.gitconfig
 # 私有配置文件
 [include]
     path = ~/.gitconfig.local
