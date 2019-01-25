@@ -64,6 +64,7 @@ fi
 
 # google's git-repo tool definition
 export REPO_URL='https://github.com/zloopk09/git-repo-mirror'
+export ANDROID_HOME="$HOME/dev/android/sdk"
 
 # alias
 alias uignore="git rm -r --cached . && git add ."
@@ -163,7 +164,7 @@ else
   alias unss="unset ALL_PROXY"
   alias sysu="sudo pacman -Syu --noconfirm"
   alias sysuf="sudo pacman -Syu --overwrite='*'"
-  alias tvon="teamviewer --daemon start"
+  alias teamup="teamviewer --daemon start"
   alias opn="nautilus -s ."
 
   # rbenv
