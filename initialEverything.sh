@@ -192,6 +192,8 @@ echo "==========================================================================
 info "making working space dir"
 info "create $HOME/dev "
 mkdir -p "$HOME/dev"
+info "create $HOME/dev/android/sdk "
+mkdir -p "$HOME/dev/android/sdk"
 info "create $HOME/doc "
 mkdir -p "$HOME/doc"
 info "create $HOME/todo "
@@ -354,6 +356,17 @@ else
     fi
     # curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
     ok "rbenv has installed"
+fi
+
+if [ "$System" == "Darwin" ];then
+    info  "Mac installed ruby build using brew"
+else
+    if [ -d "$(rbenv root)"/plugins/ruby-build ] ; then
+        info  "ruby-build has already installed"
+    else
+        mkdir -p "$(rbenv root)"/plugins
+        git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+    fi
 fi
 
 if ! rbenv versions | grep "2.5.1" ; then
