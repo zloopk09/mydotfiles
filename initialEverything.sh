@@ -121,7 +121,7 @@ else
     # ln -sf "$DOTFILES/etc/mirrorlist" /etc/pacman.d/mirrorlist
     
     info "sync&refresh database"
-    sudo pacman -Syy --noconfirm 
+    sudo pacman -Syyuu --noconfirm 
 
     info "install base tools: base-devel git curl wget yay"
     sudo pacman -S --needed --noconfirm archlinuxcn-keyring
@@ -146,7 +146,7 @@ else
 
     info "update system..."
     # --ignore=fcitx-sogoupinyin
-    sudo pacman -Syyu --noconfirm 
+    sudo pacman -Syyuu --noconfirm 
     ok "done"
 fi
 
