@@ -412,19 +412,19 @@ fi
 if test "$(command -v code)"; then
 	# from `code --list-extensions`
     info "update vscode plugins"
-    echo "yes" | code --install-extension akamud.vscode-theme-onedark
 	echo "yes" | code --install-extension k--kato.intellij-idea-keybindings
+    echo "yes" | code --install-extension akamud.vscode-theme-onedark
 	echo "yes" | code --install-extension robertohuertasm.vscode-icons
-    # echo "yes" | code --install-extension yzhang.markdown-all-in-one
-    # echo "yes" | code --install-extension AlanWalk.markdown-toc
-    # echo "yes" | code --install-extension PeterJausovec.vscode-docker
-	# echo "yes" | code --install-extension Tyriar.sort-lines
-	# echo "yes" | code --install-extension ms-python.python
-	# echo "yes" | code --install-extension naco-siren.gradle-language
-	# echo "yes" | code --install-extension donjayamanne.githistory
-    # echo "yes" | code --install-extension redhat.java
-    # echo "yes" | code --install-extension vscjava.vscode-java-debug
-    # echo "yes" | code --install-extension vscjava.vscode-java-pack
+	echo "yes" | code --install-extension eamodio.gitlens
+	echo "yes" | code --install-extension donjayamanne.githistory
+    echo "yes" | code --install-extension yzhang.markdown-all-in-one
+    echo "yes" | code --install-extension AlanWalk.markdown-toc
+	echo "yes" | code --install-extension vscjava.vscode-java-pack
+	echo "yes" | code --install-extension ms-python.python
+	echo "yes" | code --install-extension mathiasfrohlich.Kotlin
+	echo "yes" | code --install-extension naco-siren.gradle-language
+	echo "yes" | code --install-extension formulahendry.code-runner
+    echo "yes" | code --install-extension PeterJausovec.vscode-docker
 
     ok "vscode plugins has updated"
 
