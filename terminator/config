@@ -22,8 +22,8 @@
   next_tab = <Primary>Right
   paste = <Primary>v
   prev_tab = <Primary>Left
-  split_horiz = <Alt>d
-  split_vert = <Shift><Alt>d
+  split_horiz = <Alt>h
+  split_vert = <Alt>v
 [layouts]
   [[default]]
     [[[child1]]]
