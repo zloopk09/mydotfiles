@@ -7,10 +7,12 @@ tap "homebrew/services"
 tap "homebrew/cask-fonts"
 tap "homebrew/command-not-found"
 # tap "getantibody/tap"
+tap "v2ray/v2ray"
 
 # basic
 brew "git"
 cask "shadowsocksx-ng"
+brew "v2ray-core"
 cask "google-chrome"
 cask "visual-studio-code"
 cask "scroll-reverser"
