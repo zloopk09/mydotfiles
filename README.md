@@ -6,6 +6,9 @@ mydotfiles
 
 env: mac or manjaro(ArchLinux)
 
+执行完后续步骤
+1 更新v2ray配置
+2 开机启动 systemctl enable v2ray.service
 
 Reference
 -----------------
