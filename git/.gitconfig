@@ -28,7 +28,7 @@
     show = diff-so-fancy | less --tabs=1,5 -RFX
 [core]
     autocrlf = input
-    safecrlf = true
+    safecrlf = warn
     # attributesfile = ~/.gitattributes  # 多文件类型项目可以根据后缀名提交crlf的格式
     editor = vim
     precomposeunicode = true # Mac专用选项，开启以便文件名兼容其他系统
