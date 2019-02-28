@@ -136,6 +136,7 @@ cask "nextcloud"
 cask "teamviewer"
 # cask "arduino"
 # cask "zoomus"
+cask "baidunetdisk"
 
 # font
 cask "font-menlo-for-powerline"
