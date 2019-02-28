@@ -63,7 +63,7 @@ else
 fi
 
 # google's git-repo tool definition
-export REPO_URL='https://github.com/zloopk09/git-repo-mirror'
+export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'
 export ANDROID_HOME="$HOME/dev/android/sdk"
 
 # alias
