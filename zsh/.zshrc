@@ -82,6 +82,7 @@ alias ll='ls -la'
 alias vi="vim"
 alias v="vim"
 alias g="git"
+alias gp='git a . && git commit -m "update" && git push'
 alias myip="curl ipinfo.io"
 alias hs='history | grep'
 alias rm="trash"
