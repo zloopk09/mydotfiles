@@ -137,6 +137,7 @@ cask "teamviewer"
 # cask "arduino"
 # cask "zoomus"
 cask "baidunetdisk"
+cask "mat"
 
 # font
 cask "font-menlo-for-powerline"
