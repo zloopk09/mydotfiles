@@ -104,6 +104,7 @@ alias drimg="docker images"
 alias drrd="docker run -d -P"
 alias drri="docker run -i -t -P"
 alias drexe="docker exec -i -t"
+alias fatv="adb shell dumpsys activity | grep mFocusedActivity"
 # Stop all containers
 drst() { docker stop $(docker ps -a -q); }
 # Bash into running container
