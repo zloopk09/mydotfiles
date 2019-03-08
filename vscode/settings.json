@@ -38,5 +38,7 @@
       "terminal.ansiBrightMagenta": "#ff6ac1",
       "terminal.ansiBrightCyan": "#9aedfe",
       "terminal.ansiBrightWhite": "#eff0eb"
-    }
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
   }
