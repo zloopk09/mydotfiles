@@ -125,6 +125,8 @@ alias clearapp="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X shell
 eval $(thefuck --alias FUCK)
 eval $(thefuck --alias fuck)
 
+export PATH=$PATH:$HOME"/dev/android/sdk/platform-tools"
+
 # system specific
 if [ "$(uname)" = "Darwin" ]; then
   # copy ssh public key
