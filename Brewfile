@@ -75,6 +75,7 @@ brew "proxychains-ng"
 brew "scrcpy"
 brew "pidcat"
 # brew "kotlin"
+brew "minicom"
 
 # cask
 # cask "snip"
