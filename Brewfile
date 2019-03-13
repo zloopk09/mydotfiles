@@ -138,6 +138,7 @@ cask "teamviewer"
 # cask "zoomus"
 cask "baidunetdisk"
 cask "mat"
+cask "wireshark"
 
 # font
 cask "font-menlo-for-powerline"
