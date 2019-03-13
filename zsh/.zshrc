@@ -124,6 +124,7 @@ alias clearapp="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X shell
 
 eval $(thefuck --alias FUCK)
 eval $(thefuck --alias fuck)
+eval $(thefuck --alias fxxk)
 
 export PATH=$PATH:$HOME"/dev/android/sdk/platform-tools"
 
