@@ -121,6 +121,7 @@ alias unapp="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X uninstal
 # Clear all data of an app
 # Usage: clearapp com.example.demoapp
 alias clearapp="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X shell pm clear $1"
+alias andmonitor="sh ~/dev/android/sdk/tools/monitor"
 
 eval $(thefuck --alias FUCK)
 eval $(thefuck --alias fuck)
