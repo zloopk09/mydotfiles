@@ -13,7 +13,6 @@
     "terminal.integrated.cursorStyle":"underline",
     "window.restoreWindows": "one",
     "workbench.colorTheme": "Atom One Dark",
-    "workbench.iconTheme": "vscode-icons",
     "editor.fontFamily": "Source Code Pro, Consolas, 'Courier New', monospace",
     "editor.fontSize": 15,
     "editor.lineHeight": 20,
