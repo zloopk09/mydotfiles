@@ -165,9 +165,9 @@ else
     sudo pacman -S --needed --noconfirm $(cat "$DOTFILES/pacman_pkglist"|xargs)
     yay -S --needed --noconfirm $(cat "$DOTFILES/aur_pkglist"|xargs)
 
-    info "config jdk..."
-    sudo pacman -S --needed jdk8
-    sudo archlinux-java set java-8-jdk
+    # info "config jdk..."
+    # sudo pacman -S --needed jdk8
+    # sudo archlinux-java set java-8-jdk
 
     ok "done"
 fi
