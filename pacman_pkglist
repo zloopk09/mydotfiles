@@ -7,16 +7,11 @@ android-tools
 android-udev
 smali
 jadx
-noto-fonts-cjk
-wqy-bitmapfont
-wqy-microhei
-wqy-zenhei
 aria2
 ctags
 dbeaver
 gimp
 coreutils
-noto-fonts
 ranger
 diff-so-fancy
 docker
@@ -43,10 +38,6 @@ sed
 okular
 highlight
 tmux
-ttf-anonymous-pro
-ttf-dejavu
-ttf-font-awesome
-ttf-wps-fonts
 whois
 conky
 vim
@@ -76,7 +67,6 @@ anaconda
 gradle
 maven
 cowsay
-ttf-fira-mono
 kotlin
 proxychains-ng
 shellcheck
