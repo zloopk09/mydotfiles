@@ -411,10 +411,11 @@ else
 fi
 if test "$(command -v code)"; then
 	# from `code --list-extensions`
+    # code --list-extensions | xargs -L 1 echo code --install-extension
     info "update vscode plugins"
 	echo "yes" | code --install-extension k--kato.intellij-idea-keybindings
     echo "yes" | code --install-extension akamud.vscode-theme-onedark
-	echo "yes" | code --install-extension robertohuertasm.vscode-icons
+	echo "yes" | code --install-extension vscode-icons-team.vscode-icons
 	echo "yes" | code --install-extension eamodio.gitlens
 	echo "yes" | code --install-extension donjayamanne.githistory
     echo "yes" | code --install-extension yzhang.markdown-all-in-one
