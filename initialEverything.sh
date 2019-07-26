@@ -124,7 +124,7 @@ else
     sudo pacman -Syyuu --noconfirm 
 
     info "install base tools: base-devel git curl wget yay"
-    sudo pacman -S --needed --noconfirm archlinuxcn-keyring
+    sudo pacman -S --needed --noconfirm archlinuxcn-keyring archlinuxcn-mirrorlist-git 
     sudo pacman -S --needed --noconfirm base-devel git curl wget yay
 
     info "config IME(input method editor)"
