@@ -42,6 +42,7 @@ conky
 vim
 visual-studio-code-bin
 wps-office
+ttf-wps-fonts
 xclip
 yay
 ydcv
@@ -80,3 +81,10 @@ net-tools
 wireshark-qt
 minicom
 bind-tools
+ttf-fira-mono
+ttf-fira-code
+ttf-anonymous-pro
+noto-fonts-cjk
+wqy-bitmapfont
+wqy-microhei
+wqy-zenhei
