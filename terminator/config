@@ -1,6 +1,7 @@
 [global_config]
   enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, Logger, LaunchpadBugURLHandler
   focus = system
+  title_font = Fira Code 9
   title_hide_sizetext = True
   title_inactive_bg_color = "#2b303b"
   title_inactive_fg_color = "#c0c5ce"
@@ -69,4 +70,3 @@
     foreground_color = "#eff0eb"
     palette = "#282a36:#ff5c57:#5af78e:#f3f99d:#57c7ff:#ff6ac1:#9aedfe:#f1f1f0:#686868:#ff5c57:#5af78e:#f3f99d:#57c7ff:#ff6ac1:#9aedfe:#eff0eb"
     scrollback_infinite = True
-    use_system_font = False
