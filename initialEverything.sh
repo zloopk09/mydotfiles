@@ -128,7 +128,7 @@ else
     sudo pacman -S --needed --noconfirm base-devel git curl wget yay
 
     info "config IME(input method editor)"
-    sudo pacman -S --needed --noconfirm fcitx-im fcitx-configtool fcitx-sogoupinyin
+    sudo pacman -S --needed --noconfirm fcitx-im fcitx-configtool fcitx-googlepinyin
     makelink "$DOTFILES/linux/.xprofile" ~/.xprofile
 
     # info "checking yay (aur helper)..."
