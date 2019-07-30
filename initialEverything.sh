@@ -163,6 +163,7 @@ if [ "$System" == "Darwin" ];then
 else
     info "preparing..."
     sudo pacman -S --needed --noconfirm $(cat "$DOTFILES/pacman_pkglist"|xargs)
+    yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save
     yay -S --needed --noconfirm $(cat "$DOTFILES/aur_pkglist"|xargs)
 
     # info "config jdk..."
