@@ -62,6 +62,8 @@ else
   compinit -C -i
 fi
 
+SPACESHIP_VI_MODE_SHOW=false
+
 # google's git-repo tool definition
 export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'
 export ANDROID_HOME="$HOME/dev/android/sdk"
