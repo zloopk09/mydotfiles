@@ -91,6 +91,7 @@ cask "zotero"
 cask "kap" # 屏幕录制gif
 cask "docker"
 # cask "kdiff3"
+cask "diffmerge"
 cask "openconnect-gui"
 cask "jd-gui"
 cask "aliwangwang"

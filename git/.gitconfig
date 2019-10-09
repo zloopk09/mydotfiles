@@ -52,14 +52,14 @@
 [merge]
 	ff = false
 [merge]
-	tool = kdiff3
+	tool = diffmerge
 [diff]
-	tool = kdiff3
+	tool = diffmerge
     renames = copies
-[difftool "kdiff3"]	
-	cmd = 'kdiff3' "$LOCAL" "$REMOTE" >& /dev/null
-[mergetool "kdiff3"] 
-	cmd = 'kdiff3' "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED"
+[difftool "diffmerge"]	
+	cmd = 'diffmerge' "$LOCAL" "$REMOTE" >& /dev/null
+[mergetool "diffmerge"] 
+	cmd = 'diffmerge' "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED"
 # see https://github.com/SixArm/sixarm_git_gitconfig/blob/master/gitconfig.d/alias.txt
 [alias]
     a = add
