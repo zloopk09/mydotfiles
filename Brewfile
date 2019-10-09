@@ -79,7 +79,7 @@ brew "minicom"
 
 # cask
 # cask "snip"
-cask "snipaste"
+# cask "snipaste"
 cask "ao"
 cask "anki"
 cask "kindle"
