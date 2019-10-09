@@ -40,7 +40,7 @@ brew "jq"
 brew "trash"
 brew "tree"
 brew "m-cli"
-brew "vim", args: ['with-lua', 'with-override-system-vi']
+brew "vim", args: ['', 'with-lua', 'with-override-system-vi']
 brew "coreutils"
 # brew "moreutils"
 brew "apktool"
@@ -68,7 +68,7 @@ brew "libyaml" # for ruby-build to use
 brew "libffi" # for ruby-build to use
 brew "shellcheck"
 brew "align" # 文本对齐
-brew "imagemagick", args: ['--with-webp']
+brew "imagemagick", args: ['', '--with-webp']
 brew "ffmpeg"
 brew "colordiff"
 brew "proxychains-ng"
@@ -90,8 +90,8 @@ cask "jumpcut"
 cask "zotero"
 cask "kap" # 屏幕录制gif
 cask "docker"
-cask "kdiff3"
-cask "openconnect"
+# cask "kdiff3"
+cask "openconnect-gui"
 cask "jd-gui"
 cask "aliwangwang"
 cask "tor-browser"
@@ -116,14 +116,12 @@ cask "pycharm"
 cask "switchhosts"
 cask "flux"
 cask "anaconda"
-cask "cocoapods-app"
 # cask "sip"
 cask "spectacle"
 cask "dbeaver-community"
 # cask "sequel-pro"
 cask "db-browser-for-sqlite"
-cask "java8"
-cask "java10"
+cask "java11"
 cask "java"
 brew "gradle"
 brew "maven"
@@ -156,7 +154,7 @@ cask "qlcolorcode"  # 代码高亮
 cask "qlstephen" # 纯文本格式增强
 cask "qlmarkdown" # Markdown 预览
 cask "quicklook-json" # JSON 预览
-cask "quicklook-csv" # csv 格式预览
+# cask "quicklook-csv" # csv 格式预览
 cask "qlimagesize" # 标题栏显示图片大小信息
 cask "webpquicklook" # webp 格式支持
 cask "suspicious-package" # pkg 格式支持
