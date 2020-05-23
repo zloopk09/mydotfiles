@@ -9,5 +9,5 @@
      PreferredAuthentications publickey
      IdentityFile ~/.ssh/bitbucket_id_rsa
      Port 22
-     ProxyCommand nc -X 5 -x 127.0.0.1:1086 %h %p
+#    ProxyCommand nc -X 5 -x 127.0.0.1:1086 %h %p
 
