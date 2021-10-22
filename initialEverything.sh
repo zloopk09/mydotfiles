@@ -242,7 +242,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
     echo "=============================================================================="
     info "config env..."
     brew install zsh antigen
-    brew cask install iterm2
+    brew install iterm2
     BREW_ZSH=/usr/local/bin/zsh
     echo "zsh version: $($BREW_ZSH --version)"
     if [[ $SHELL == *"zsh"* ]]; then
@@ -299,7 +299,7 @@ if type conda > /dev/null 2>&1; then
 else
     info  "Installing anaconda"
     if [ "$System" == "Darwin" ];then
-        brew cask install anaconda
+        brew install anaconda
         export PATH=/usr/local/anaconda3/bin:"$PATH"
     else
         sudo pacman -S --needed --noconfirm anaconda
@@ -404,7 +404,7 @@ if type code > /dev/null 2>&1; then
 else
     info  "Installing vscode"
     if [ "$System" == "Darwin" ];then
-        brew cask install visual-studio-code
+        brew install visual-studio-code
     else
         sudo pacman -S --noconfirm visual-studio-code 
     fi
