@@ -32,8 +32,8 @@ else
 fi
 
 antigen use oh-my-zsh
-antigen bundle sudo
-antigen bundle z
+antigen bundle robertzk/sudo.zsh
+antigen bundle agkozak/zsh-z
 antigen bundle djui/alias-tips
 antigen bundle lukechilds/zsh-nvm
 antigen bundle zsh-users/zsh-completions
@@ -138,6 +138,9 @@ if [ "$(uname)" = "Darwin" ]; then
 
   # python环境切换
   export PATH=/usr/local/anaconda3/bin:"$PATH"
+
+  # brew sbin
+  export PATH="/usr/local/sbin:$PATH"
 
   # 网络环境切换
   alias ss="export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;"
