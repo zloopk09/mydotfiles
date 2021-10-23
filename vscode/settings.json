@@ -12,8 +12,7 @@
     "window.title": "${activeEditorMedium}${separator}${rootName}",
     "terminal.integrated.cursorStyle":"underline",
     "window.restoreWindows": "one",
-    "workbench.colorTheme": "Atom One Dark",
-    "editor.fontFamily": "Source Code Pro, Consolas, 'Courier New', monospace",
+    "editor.fontFamily": "",
     "editor.fontSize": 15,
     "editor.lineHeight": 20,
     "editor.tabSize": 4,
@@ -40,5 +39,6 @@
     },
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "workbench.iconTheme": "vscode-icons"
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Atom One Dark"
   }
