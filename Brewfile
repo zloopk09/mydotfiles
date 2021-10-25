@@ -9,8 +9,8 @@ tap "homebrew/command-not-found"
 
 # basic
 brew "git"
-brew "vim", args: [ 'with-override-system-vi']
 brew "zsh"
+brew "vim"
 brew "antigen"
 
 brew "diff-so-fancy"
