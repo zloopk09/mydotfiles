@@ -152,11 +152,12 @@ if [ "$(uname)" = "Darwin" ]; then
   alias opn="open ."
 
   # java环境切换 默认java8
-#  export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
-#  export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
-#  alias java8='export JAVA_HOME=$JAVA_8_HOME'
-#  alias java11='export JAVA_HOME=$JAVA_11_HOME'
-#  export JAVA_HOME=$JAVA_8_HOME
+ export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
+ export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
+ alias java8='export JAVA_HOME=$JAVA_8_HOME'
+ alias java11='export JAVA_HOME=$JAVA_11_HOME'
+ export JAVA_HOME=$JAVA_8_HOME
+#  export JAVA_HOME=`/usr/bin/java`
 
   # rbenv
   eval "$(rbenv init -)"
