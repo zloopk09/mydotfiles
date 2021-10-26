@@ -9,8 +9,10 @@ tap "homebrew/command-not-found"
 
 # basic
 brew "git"
+brew "svn"
 brew "zsh"
 brew "vim"
+brew "nvm"
 brew "antigen"
 
 brew "diff-so-fancy"
