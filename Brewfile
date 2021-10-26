@@ -14,6 +14,7 @@ brew "zsh"
 brew "vim"
 brew "nvm"
 brew "antigen"
+brew "java11"
 
 brew "diff-so-fancy"
 brew "thefuck"
