@@ -419,8 +419,8 @@ if test "$(command -v code)"; then
 	echo "yes" | code --install-extension vscode-icons-team.vscode-icons
 	echo "yes" | code --install-extension eamodio.gitlens
 	echo "yes" | code --install-extension donjayamanne.githistory
-    echo "yes" | code --install-extension yzhang.markdown-all-in-one
-    echo "yes" | code --install-extension joffreykern.markdown-toc
+    # echo "yes" | code --install-extension yzhang.markdown-all-in-one
+    # echo "yes" | code --install-extension joffreykern.markdown-toc
 	# echo "yes" | code --install-extension vscjava.vscode-java-pack
 	# echo "yes" | code --install-extension ms-python.python
 	# echo "yes" | code --install-extension mathiasfrohlich.Kotlin
