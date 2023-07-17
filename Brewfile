@@ -14,7 +14,11 @@ brew "zsh"
 brew "vim"
 brew "nvm"
 brew "antigen"
-brew "java11"
+# brew "java11"
+brew "openjdk@8"
+brew "openjdk@11"
+brew "openjdk@17"
+
 
 brew "diff-so-fancy"
 brew "thefuck"
