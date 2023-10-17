@@ -1,7 +1,7 @@
 # see https://github.com/rbenv/rbenv/wiki/Unix-shell-initialization
 # zmodload zsh/zprof
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.fvm/default/bin
 
 # Use vim as the default text editor
 export EDITOR=vim
@@ -67,6 +67,8 @@ SPACESHIP_VI_MODE_SHOW=false
 # google's git-repo tool definition
 export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'
 export ANDROID_HOME="$HOME/dev/android/sdk"
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 
 # alias
 alias uignore="git rm -r --cached . && git add ."
@@ -156,7 +158,7 @@ if [ "$(uname)" = "Darwin" ]; then
  export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
  alias java8='export JAVA_HOME=$JAVA_8_HOME'
  alias java11='export JAVA_HOME=$JAVA_11_HOME'
- export JAVA_HOME=$JAVA_8_HOME
+ export JAVA_HOME=$JAVA_11_HOME
 #  export JAVA_HOME=`/usr/bin/java`
 
   # rbenv
@@ -189,19 +191,3 @@ else
 fi
 
 # zprof
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/youhuanz/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/youhuanz/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/youhuanz/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/youhuanz/opt/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-

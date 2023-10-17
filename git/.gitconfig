@@ -33,7 +33,7 @@
     editor = vim
     precomposeunicode = true # Mac专用选项，开启以便文件名兼容其他系统
     whitespace = trailing-space,space-before-tab # 默认设置
-    excludesfile = ~/.mydotfiles/git/.global_gitignore
+	excludesfile =  ~/.global_gitignore
     pager = diff-so-fancy | less --tabs=4 -RFX
     quotepath = false
 [submodule]
@@ -110,8 +110,6 @@
 # 放在最后 覆盖之前的
 [includeIf "gitdir:~/mrepo/github/"]
     path = ~/mrepo/github/.gitconfig
-[includeIf "gitdir:~/mrepo/163/"]
-    path = ~/mrepo/163/.gitconfig
 # 私有配置文件
 [include]
     path = ~/.gitconfig.local
