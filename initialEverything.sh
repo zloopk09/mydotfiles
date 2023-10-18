@@ -197,8 +197,8 @@ info "create $HOME/dev/android/sdk "
 mkdir -p "$HOME/dev/android/sdk"
 info "create $HOME/doc "
 mkdir -p "$HOME/doc"
-info "create $HOME/todo "
-mkdir -p "$HOME/todo"
+# info "create $HOME/todo "
+# mkdir -p "$HOME/todo"
 info "create $HOME/mrepo "
 mkdir -p "$HOME/mrepo"
 info "create $HOME/mrepo/github "
@@ -206,8 +206,6 @@ mkdir -p "$HOME/mrepo/github"
 ok "working space dir been updated"
 info "linking bin"
 makelink "$DOTFILES"/bin ~/bin
-info "linking bak"
-makelink "$DOTFILES"/bak ~/bak
 ok "done"
 
 
@@ -262,6 +260,8 @@ if [ "$(uname -s)" = "Darwin" ]; then
     defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
     ok "done iterm2 config"
     echo "you may need to open iterm2, and set it as the default terminal."
+    info "linking zshrc"
+    makelink "$DOTFILES/zsh/.zshrcDarwin" ~/.zshrc
 else
     echo "=============================================================================="
     echo "==                     step(5/10):terminal   zsh antigen  terminator        =="
@@ -285,100 +285,20 @@ else
     mkdir -p ~/.config/terminator/
     makelink "$DOTFILES/terminator/config" ~/.config/terminator/config
     ok "done terminator config"
+    info "linking zshrc"
+    makelink "$DOTFILES/zsh/.zshrcPacman" ~/.zshrc
 fi
-info "linking zshrc"
-makelink "$DOTFILES/zsh/.zshrc" ~/.zshrc
 ok "done"
 
-
 echo "=============================================================================="
-echo "==                     step(6/10):config anaconda  python env               =="
+echo "==                     step(6/10): ...                  =="
 echo "=============================================================================="
-if type conda > /dev/null 2>&1; then
-    ok "anaconda has already installed"
-else
-    info  "Installing anaconda"
-    if [ "$System" == "Darwin" ];then
-        brew install anaconda
-        export PATH=/usr/local/anaconda3/bin:"$PATH"
-    else
-        sudo pacman -S --needed --noconfirm anaconda
-        export PATH="/opt/anaconda/bin:$PATH"
-    fi
-    ok "anaconda has installed"
-fi
-
-if ! conda env list | grep "basicPy36"  ; then
-    info "creating basicPy36 env"
-    conda create -n basicPy36 -y python=3.6
-else
-    ok "basicPy36 env has already created"
-fi
-
-if ! conda env list | grep "basicPy27" ; then
-    info "creating basicPy27 env"
-    conda create -n basicPy27 -y python=2.7
-else
-    ok "basicPy27 env has already created"
-fi
-
-info "disable prompt conflict with spaceship prompt"
-conda config --set changeps1 False
 ok "done"
-echo "conda env list"
-conda env list
-
-
-# using zsh plugin instead
-# toc "nvm"
-# if [[ type nvm > /dev/null 2>&1 ]]; then
-#   ok "nvm has already installed"
-# else
-#   ing  "Installing nvm"
-#   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-#   ok "nvm has installed"
-# fi
-
 
 echo "=============================================================================="
-echo "==                     step(7/10):rbenv  ruby env                           =="
+echo "==                     step(7/10): ...              =="
 echo "=============================================================================="
-if type rbenv > /dev/null 2>&1; then
-    ok "rbenv has already installed"
-else
-    info  "Installing rbenv"
-    if [ "$System" == "Darwin" ];then
-        brew install rbenv
-        eval "$(rbenv init -)"
-    else
-        yay -S --needed --noconfirm rbenv
-        export PATH="$HOME/.rbenv/bin:$PATH"
-        eval "$(rbenv init -)"
-    fi
-    # curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
-    ok "rbenv has installed"
-fi
-
-if [ "$System" == "Darwin" ];then
-    info  "Mac installed ruby build using brew"
-else
-    if [ -d "$(rbenv root)"/plugins/ruby-build ] ; then
-        info  "ruby-build has already installed"
-    else
-        mkdir -p "$(rbenv root)"/plugins
-        git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
-    fi
-fi
-
-if ! rbenv versions | grep "2.5.1" ; then
-    info "rbenv install 2.5.1"
-    rbenv install 2.5.1
-else
-    ok "rbenv env 2.5.1 has already installed"
-fi
-echo "rbenv versions"
-rbenv versions
-
+ok "done"
 
 echo "=============================================================================="
 echo "==                     step(8/10):config vim with vim-plug                  =="
@@ -417,8 +337,8 @@ if test "$(command -v code)"; then
 	echo "yes" | code --install-extension k--kato.intellij-idea-keybindings
     echo "yes" | code --install-extension akamud.vscode-theme-onedark
 	echo "yes" | code --install-extension vscode-icons-team.vscode-icons
-	echo "yes" | code --install-extension eamodio.gitlens
-	echo "yes" | code --install-extension donjayamanne.githistory
+	# echo "yes" | code --install-extension eamodio.gitlens
+	# echo "yes" | code --install-extension donjayamanne.githistory
     # echo "yes" | code --install-extension yzhang.markdown-all-in-one
     # echo "yes" | code --install-extension joffreykern.markdown-toc
 	# echo "yes" | code --install-extension vscjava.vscode-java-pack
@@ -447,11 +367,10 @@ fi
 echo "=============================================================================="
 echo "==                     step(10/10):link other dotfiles                      =="
 echo "=============================================================================="
-info "linking proxychains"
+# info "linking proxychains"
 # makelink "$DOTFILES/proxychains" etc/.proxychains
-makelink "$DOTFILES/proxychains" ~/.proxychains
+# makelink "$DOTFILES/proxychains" ~/.proxychains
 ok "done"
-
 # info "linking SwitchHosts"
 # mkdir -p ~/.SwitchHosts
 # makelink "$DOTFILES/SwitchHosts/data.json" ~/.SwitchHosts/data.json
