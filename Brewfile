@@ -20,6 +20,7 @@ brew "antigen"
 brew "exa"
 brew "ack"
 brew "trash"
+brew "diff-so-fancy"
 
 # cask "scroll-reverser"
 cask "alfred"
