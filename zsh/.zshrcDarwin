@@ -17,7 +17,6 @@ autoload -U colors && colors
 source /usr/local/share/antigen/antigen.zsh
 
 antigen use oh-my-zsh
-antigen bundle robertzk/sudo.zsh
 antigen bundle agkozak/zsh-z
 antigen bundle djui/alias-tips
 antigen bundle zsh-users/zsh-completions
