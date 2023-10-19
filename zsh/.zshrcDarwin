@@ -63,7 +63,7 @@ alias gwd='./gradlew -Dorg.gradle.daemon=false -Dorg.gradle.debug=true'
 alias dr="docker"
 alias adbfocus="adb shell dumpsys activity | grep mFocused"
 
-export PATH=$PATH:$HOME/.fvm/default/bin
+export PATH=$PATH:$HOME/.fvm:$HOME/fvm/default/bin
 
 alias msshkey="pbcopy < ~/.ssh/id_rsa.pub | echo '=> Public key copied to pasteboard.'"
 
