@@ -83,3 +83,5 @@ alias java11='export JAVA_HOME=$JAVA_11_HOME'
 alias java17='export JAVA_HOME=$JAVA_17_HOME'
 export JAVA_HOME=$JAVA_11_HOME
 #  export JAVA_HOME=`/usr/bin/java`
+
+export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
