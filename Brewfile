@@ -39,4 +39,9 @@ cask "font-source-code-pro-for-powerline"
 
 # cask "appcleaner"  
 
+cask "qlcolorcode"  # 代码高亮
+cask "qlstephen" # 纯文本格式增强
+cask "qlmarkdown" # Markdown 预览
+cask "qlimagesize" # 标题栏显示图片大小信息
+cask "quicklookapk"  # apk预览
 
