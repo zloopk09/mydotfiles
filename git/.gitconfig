@@ -108,7 +108,7 @@
     snapshots = !git stash list --grep snapshot
     alias = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
 # 放在最后 覆盖之前的
-[includeIf "gitdir:~/mrepo/github/"]
+[includeIf "gitdir/i:~/mrepo/github/"]
     path = ~/mrepo/github/.gitconfig
 # 私有配置文件
 [include]
