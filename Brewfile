@@ -33,14 +33,17 @@ cask "miniconda"
 
 cask "font-source-code-pro"
 cask "font-source-code-pro-for-powerline"
+cask "font-fira-code"
 
-cask "qlcolorcode"  # 代码高亮
-cask "qlstephen" # 纯文本格式增强
-cask "qlmarkdown" # Markdown 预览
-cask "quicklook-json" # JSON 预览
-cask "quicklook-csv" # csv 格式预览
-cask "qlimagesize" # 标题栏显示图片大小信息
-cask "qlvideo"  # 视频缩略图预览
-cask "webpquicklook" # webp 格式支持
-cask "suspicious-package" # pkg 格式支持
+# cask "appcleaner"  
+
+# cask "qlcolorcode"  # 代码高亮
+# cask "qlstephen" # 纯文本格式增强
+# cask "qlmarkdown" # Markdown 预览
+# cask "quicklook-json" # JSON 预览
+# cask "quicklook-csv" # csv 格式预览
+# cask "qlimagesize" # 标题栏显示图片大小信息
+# cask "qlvideo"  # 视频缩略图预览
+# cask "webpquicklook" # webp 格式支持
+# cask "suspicious-package" # pkg 格式支持
 
