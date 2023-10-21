@@ -7,6 +7,7 @@ brew "zsh"
 brew "vim"
 brew "antigen"
 
+brew "rar"
 brew "exa"
 brew "trash"
 brew "diff-so-fancy"
