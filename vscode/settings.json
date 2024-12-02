@@ -52,7 +52,7 @@
       "editor.suggest.snippetsPreventQuickSuggestions": false,
       "editor.suggestSelection": "first",
       "editor.tabCompletion": "onlySnippets",
-      "editor.wordBasedSuggestions": false
+      "editor.wordBasedSuggestions": "off"
     },
     "dart.debugExternalPackageLibraries": true,
     "dart.debugSdkLibraries": true,
@@ -66,5 +66,6 @@
     "dart.flutterSdkPath": "/Users/didi/fvm/versions/2.10.5",
     "[python]": {
       "editor.formatOnType": true
-    }
+    },
+    "redhat.telemetry.enabled": true
   }

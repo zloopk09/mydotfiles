@@ -37,7 +37,6 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 
 # alias
 alias updateignore="git rm -r --cached . && git add ."
-alias ls="exa"
 alias py2="conda activate py2"
 alias py3="conda activate py3"
 alias unpy="conda deactivate"
