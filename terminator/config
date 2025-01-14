@@ -1,0 +1,72 @@
+[global_config]
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, Logger, LaunchpadBugURLHandler
+  focus = system
+  title_font = Fira Code 9
+  title_hide_sizetext = True
+  title_inactive_bg_color = "#2b303b"
+  title_inactive_fg_color = "#c0c5ce"
+  title_transmit_bg_color = "#2b303b"
+  title_transmit_fg_color = "#a3be8c"
+[keybindings]
+  broadcast_all = None
+  broadcast_group = None
+  broadcast_off = None
+  close_term = <Alt>w
+  close_window = <Alt>q
+  copy = <Primary>c
+  cycle_next = None
+  cycle_prev = None
+  edit_tab_title = None
+  edit_terminal_title = None
+  edit_window_title = None
+  go_next = <Alt>bracketright
+  go_prev = <Alt>bracketleft
+  group_all = None
+  group_tab = None
+  hide_window = None
+  insert_number = None
+  insert_padded = None
+  layout_launcher = None
+  move_tab_left = None
+  move_tab_right = None
+  new_tab = <Alt>t
+  new_terminator = None
+  new_window = <Shift><Alt>t
+  next_tab = <Shift><Alt>Right
+  paste = <Primary>v
+  prev_tab = <Shift><Alt>Left
+  reset = None
+  reset_clear = None
+  resize_down = None
+  resize_left = None
+  resize_right = None
+  resize_up = None
+  rotate_ccw = None
+  rotate_cw = None
+  scaled_zoom = None
+  search = <Primary>f
+  split_horiz = <Alt>v
+  split_vert = <Alt>h
+  toggle_scrollbar = None
+  toggle_zoom = None
+  ungroup_all = None
+  ungroup_tab = None
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    allow_bold = False
+    background_color = "#2b303b"
+    copy_on_selection = True
+    cursor_color = "#97979b"
+    font = SauceCodePro Nerd Font Medium 12
+    foreground_color = "#eff0eb"
+    palette = "#282a36:#ff5c57:#5af78e:#f3f99d:#57c7ff:#ff6ac1:#9aedfe:#f1f1f0:#686868:#ff5c57:#5af78e:#f3f99d:#57c7ff:#ff6ac1:#9aedfe:#eff0eb"
+    scrollback_infinite = True

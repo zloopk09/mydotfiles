@@ -1,0 +1,149 @@
+[user]
+    name = zloopk09
+    email = zloopk09@gmail.com
+
+[core]
+    # 基础配置
+    editor = vim                           # 默认编辑器
+    autocrlf = input                       # Unix 风格的换行符
+    safecrlf = warn                        # 混合换行符时警告
+    quotepath = false                      # 正确显示中文文件名
+    precomposeunicode = true              # Mac 系统文件名兼容
+    excludesfile = ~/.global_gitignore     # 全局忽略文件
+    pager = delta                          # 使用 delta 作为默认 pager
+    
+    # 空白符处理
+    whitespace = trailing-space,space-before-tab,indent-with-non-tab
+
+[color]
+    # 颜色设置
+    ui = auto
+    diff = auto
+    status = auto
+    branch = auto
+
+[commit]
+    template = ~/.git_commit_template.txt  # commit 模板
+    verbose = true                         # 显示详细的 commit 信息
+
+[diff]
+    # diff 工具配置
+    tool = vimdiff
+    algorithm = histogram                  # 更好的 diff 算法
+    colorMoved = default                  # 移动代码块的颜色
+    wsErrorHighlight = all                # 显示空白符错误
+
+[merge]
+    # 合并策略配置
+    ff = false                            # 禁用快进合并
+    conflictstyle = zdiff3               # 使用改进的冲突样式
+    tool = vimdiff                        # 合并工具
+    log = true                           # 合并时显示日志
+
+[pull]
+    rebase = true                         # pull 时使用 rebase
+    ff = only                            # 只允许快进合并
+
+[push]
+    default = simple                      # 推送策略
+    followTags = true                    # 自动推送标签
+
+[fetch]
+    prune = true                         # 自动清理已删除的远程分支
+
+[branch]
+    sort = -committerdate                # 分支排序方式
+    autoSetupRebase = always            # 新分支自动设置 rebase
+
+[rebase]
+    autoStash = true                     # 自动 stash/unstash
+    updateRefs = true                    # 更新相关引用
+
+[status]
+    showUntrackedFiles = all            # 显示未跟踪文件
+    showStash = true                    # 显示 stash 信息
+
+[stash]
+    showPatch = true                    # 显示 stash 的详细信息
+
+[log]
+    date = iso                          # ISO 格式日期
+
+[delta]
+    # Delta 主题配置
+    navigate = true                      # 使用 n 和 N 在 diff 块间导航
+    light = false                       # 深色主题
+    side-by-side = true                 # 并排显示
+    line-numbers = true                 # 显示行号
+    syntax-theme = Dracula              # 语法高亮主题
+    file-style = bold yellow ul         # 文件标题样式
+    file-decoration-style = yellow box   # 文件装饰样式
+    hunk-header-style = file line-number syntax # 代码块头部样式
+
+[interactive]
+    diffFilter = delta --color-only     # 交互式 diff 过滤器
+
+[alias]
+    # 基础命令简写
+    a = add
+    br = branch -v
+    co = checkout
+    c = commit
+    cm = commit -m
+    cam = commit -a -m
+    cmu = commit -a -m "update"
+    amend = commit --amend -m
+    d = diff
+    f = fetch --prune
+    g = grep
+    l = log
+    ss = status --short --branch
+    re = remote
+    t = tag
+    
+    # 合并相关
+    mr = merge
+    mrn = merge --no-ff
+    mrnn = merge --no-commit --no-ff
+    
+    # 拉取推送
+    pl = pull --prune
+    plr = pull --rebase
+    ph = push
+    
+    # 分支管理
+    cl = clone
+    cp = cherry-pick
+    rb = rebase
+    rbc = rebase --continue
+    rv = revert
+    rvnc = revert --no-commit
+    
+    # 撤销操作
+    unadd = reset HEAD
+    uncommit = reset --soft HEAD^
+    undo = reset --hard
+    
+    # 子模块
+    sb = submodule
+    str = subtree
+    sbu = submodule update --init --recursive
+    
+    # 日志查看
+    ls = log --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset'
+    
+    # 工具
+    alias = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+    sp = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+    sps = !git stash list --grep snapshot
+    last = log -1 HEAD --stat
+    contributors = shortlog --summary --numbered
+    filehistory = log -p --follow -1
+
+# 私有配置
+[include]
+    path = ~/.gitconfig.local
+
+# 目录特定配置
+[includeIf "gitdir/i:~/mrepo/github/"]
+    path = ~/mrepo/github/.gitconfig

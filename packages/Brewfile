@@ -1,0 +1,31 @@
+cask_args appdir: "/Applications"
+
+# basic
+brew "git"
+brew "zsh"
+brew "vim"
+
+brew "antigen"
+brew "git-delta"
+brew "trash"
+
+cask "cheatsheet"
+cask "spectacle"
+cask "iterm2"
+cask "visual-studio-code"
+
+brew "font-hack-nerd-font"
+
+tap "homebrew/cask-fonts"
+cask "font-source-code-pro"
+cask "font-source-code-pro-for-powerline"
+
+# brew "openjdk@8"
+# brew "openjdk@11"
+brew "openjdk@17"
+# brew "openjdk@21"
+
+
+# cask "miniconda"
+# cask "android-studio"
+

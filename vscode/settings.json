@@ -1,0 +1,70 @@
+{
+    "window.openWithoutArgumentsInNewWindow": "off",
+    "editor.rulers": [
+      80,
+      120
+    ],
+    "files.autoSave": "off",
+    "files.encoding": "utf8",
+    "editor.cursorStyle":"line",
+    "editor.renderWhitespace": "boundary",
+    "workbench.startupEditor": "none",
+    "window.title": "${activeEditorMedium}${separator}${rootName}",
+    "terminal.integrated.cursorStyle":"underline",
+    "window.restoreWindows": "one",
+    "editor.fontFamily": "Source Code Pro for Powerline",
+    "editor.fontSize": 15,
+    "editor.lineHeight": 20,
+    "editor.tabSize": 4,
+    "workbench.colorCustomizations": {
+      // The background is optional
+      // "terminal.background": "#282a36",
+      "terminal.foreground": "#eff0eb",
+      "terminal.ansiBlack": "#282a36",
+      "terminal.ansiRed": "#ff5c57",
+      "terminal.ansiGreen": "#5af78e",
+      "terminal.ansiYellow": "#f3f99d",
+      "terminal.ansiBlue": "#57c7ff",
+      "terminal.ansiMagenta": "#ff6ac1",
+      "terminal.ansiCyan": "#9aedfe",
+      "terminal.ansiWhite": "#f1f1f0",
+      "terminal.ansiBrightBlack": "#686868",
+      "terminal.ansiBrightRed": "#ff5c57",
+      "terminal.ansiBrightGreen": "#5af78e",
+      "terminal.ansiBrightYellow": "#f3f99d",
+      "terminal.ansiBrightBlue": "#57c7ff",
+      "terminal.ansiBrightMagenta": "#ff6ac1",
+      "terminal.ansiBrightCyan": "#9aedfe",
+      "terminal.ansiBrightWhite": "#eff0eb"
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Atom One Dark",
+    "security.workspace.trust.untrustedFiles": "open",
+    "[dart]": {
+      "editor.formatOnSave": true,
+      "editor.formatOnType": true,
+      "editor.rulers": [
+        80
+      ],
+      "editor.selectionHighlight": false,
+      "editor.suggest.snippetsPreventQuickSuggestions": false,
+      "editor.suggestSelection": "first",
+      "editor.tabCompletion": "onlySnippets",
+      "editor.wordBasedSuggestions": "off"
+    },
+    "dart.debugExternalPackageLibraries": true,
+    "dart.debugSdkLibraries": true,
+    "dart.openDevTools": "flutter",
+    "editor.unicodeHighlight.allowedLocales": {
+      "zh-hans": true,
+      "zh-hant": true
+    },
+    "editor.minimap.enabled": false,
+    "vsicons.dontShowNewVersionMessage": true,
+    "[python]": {
+      "editor.formatOnType": true
+    },
+    "redhat.telemetry.enabled": true
+  }

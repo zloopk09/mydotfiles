@@ -1,0 +1,109 @@
+# 性能分析（需要时取消注释）
+# zmodload zsh/zprof
+
+# ===== 基础设置 =====
+# 设置环境变量
+export PATH=/usr/local/sbin:/usr/local/bin:$PATH:$HOME/dev/android/sdk/platform-tools
+export EDITOR=vim
+export LANG=en_US.UTF-8
+
+# ===== History 设置 =====
+HISTSIZE=10000                 # 历史记录数
+SAVEHIST=10000                # 保存历史记录数
+HISTFILE=~/.zsh_history       # 历史记录文件
+HIST_STAMPS="mm/dd/yyyy"      # 历史记录时间格式
+
+# History 选项
+setopt HIST_IGNORE_ALL_DUPS   # 忽略重复命令
+setopt HIST_IGNORE_SPACE      # 忽略以空格开头的命令
+setopt HIST_REDUCE_BLANKS     # 删除命令历史中的多余空格
+setopt SHARE_HISTORY          # 共享历史记录
+setopt EXTENDED_HISTORY       # 记录命令的开始时间戳和持续时间
+
+# ===== 自动补全设置 =====
+DISABLE_CORRECTION="true"      # 禁用自动更正
+autoload -U colors && colors  # 加载颜色支持
+
+# ===== Antigen 配置 =====
+source $HOMEBREW_PREFIX/share/antigen/antigen.zsh
+
+# 加载 oh-my-zsh 库
+antigen use oh-my-zsh
+
+# 加载插件
+antigen bundles <<EOBUNDLES
+    git
+    agkozak/zsh-z
+    
+    # 提示和补全
+    djui/alias-tips
+    zsh-users/zsh-completions
+    zsh-users/zsh-autosuggestions
+    
+    # 语法高亮和历史搜索
+    zdharma-continuum/fast-syntax-highlighting
+    zsh-users/zsh-history-substring-search
+EOBUNDLES
+
+# 主题设置
+antigen theme spaceship-prompt/spaceship-prompt
+antigen apply
+
+# Spaceship 主题配置
+SPACESHIP_VI_MODE_SHOW=false
+SPACESHIP_PROMPT_ORDER=(
+  user          # Username section
+  dir           # Current directory section
+  git           # Git section (git_branch + git_status)
+  exec_time     # Execution time
+  line_sep      # Line break
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
+
+# ===== 开发环境配置 =====
+# Android 开发
+export ANDROID_HOME="$HOME/dev/android/sdk"
+
+# Flutter 配置
+export PUB_HOSTED_URL="https://pub.flutter-io.cn"
+export FLUTTER_STORAGE_BASE_URL="https://storage.flutter-io.cn"
+
+# Java 环境切换
+export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
+export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
+export JAVA_17_HOME=$(/usr/libexec/java_home -v17)
+export JAVA_HOME=$JAVA_17_HOME
+alias java8='export JAVA_HOME=$JAVA_8_HOME'
+alias java11='export JAVA_HOME=$JAVA_11_HOME'
+alias java17='export JAVA_HOME=$JAVA_17_HOME'
+
+# Python 环境
+alias py2="conda activate py2"
+alias py3="conda activate py3"
+alias unpy="conda deactivate"
+alias py='python'
+
+# alias
+alias ll='ls -la'
+alias rm="trash"
+alias c='clear'
+alias hs='history | grep'
+alias zshrc="vim ~/.zshrc"
+alias gitcon="vim ~/.gitconfig"
+alias vimrc="vim ~/.vimrc"
+alias g="git"
+alias updateignore="git rm -r --cached . && git add ."
+alias brewup='brew update; brew upgrade; brew cleanup'
+alias opn="open ."
+alias ss="export http_proxy=http://127.0.0.1:10887;export https_proxy=http://127.0.0.1:10887;"
+alias unss='unset http_proxy && unset https_proxy'
+
+# Android 开发
+alias gd="gradle -Dorg.gradle.daemon=false -Dorg.gradle.debug=true"
+alias gw='./gradlew -Dorg.gradle.daemon=false -Dorg.gradle.debug=true'
+alias adbfo="adb shell dumpsys activity | grep mFocused"
+
+
+
