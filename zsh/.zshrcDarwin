@@ -31,19 +31,13 @@ source $HOMEBREW_PREFIX/share/antigen/antigen.zsh
 antigen use oh-my-zsh
 
 # 加载插件
-antigen bundles <<EOBUNDLES
-    git
-    agkozak/zsh-z
-    
-    # 提示和补全
-    djui/alias-tips
-    zsh-users/zsh-completions
-    zsh-users/zsh-autosuggestions
-    
-    # 语法高亮和历史搜索
-    zdharma-continuum/fast-syntax-highlighting
-    zsh-users/zsh-history-substring-search
-EOBUNDLES
+antigen bundle git
+antigen bundle agkozak/zsh-z
+antigen bundle djui/alias-tips
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zdharma-continuum/fast-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search
 
 # 主题设置
 antigen theme spaceship-prompt/spaceship-prompt
