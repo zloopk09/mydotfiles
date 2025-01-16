@@ -14,11 +14,11 @@ cask "spectacle"
 cask "iterm2"
 cask "visual-studio-code"
 
-brew "font-hack-nerd-font"
 
 tap "homebrew/cask-fonts"
 cask "font-source-code-pro"
 cask "font-source-code-pro-for-powerline"
+# brew "font-hack-nerd-font"
 
 # brew "openjdk@8"
 # brew "openjdk@11"
