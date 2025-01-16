@@ -333,6 +333,8 @@ step_config_vscode(){
         echo "yes" | code --install-extension k--kato.intellij-idea-keybindings
         echo "yes" | code --install-extension zhuangtongfa.material-theme
         echo "yes" | code --install-extension vscode-icons-team.vscode-icons
+        echo "yes" | code --install-extension yzhang.markdown-all-in-one
+        echo "yes" | code --install-extension eamodio.gitlens
         ok "vscode plugins has updated"
 
         if [ "$(uname -s)" = "Darwin" ]; then
