@@ -13,7 +13,7 @@
     pager = delta                          # 使用 delta 作为默认 pager
     
     # 空白符处理
-    whitespace = trailing-space,space-before-tab,indent-with-non-tab
+    whitespace = trailing-space,space-before-tab,indent-with-non-tab,cr-at-eol
 
 [color]
     # 颜色设置
@@ -47,9 +47,12 @@
 [push]
     default = simple                      # 推送策略
     followTags = true                    # 自动推送标签
+    autoSetupRemote = true              # 自动设置远程分支
 
 [fetch]
     prune = true                         # 自动清理已删除的远程分支
+    pruneTags = true                    # 自动清理已删除的远程标签
+    parallel = 0                        # 并行获取
 
 [branch]
     sort = -committerdate                # 分支排序方式
@@ -62,12 +65,14 @@
 [status]
     showUntrackedFiles = all            # 显示未跟踪文件
     showStash = true                    # 显示 stash 信息
+    submoduleSummary = true            # 显示子模块摘要
 
 [stash]
     showPatch = true                    # 显示 stash 的详细信息
 
 [log]
     date = iso                          # ISO 格式日期
+    abbrevCommit = true                # 缩写的提交哈希
 
 [delta]
     # Delta 主题配置
@@ -90,7 +95,7 @@
     co = checkout
     c = commit
     cm = commit -m
-    cam = commit -a -m
+    cma = commit -a -m
     cmu = commit -a -m "update"
     amend = commit --amend -m
     d = diff
@@ -139,6 +144,7 @@
     last = log -1 HEAD --stat
     contributors = shortlog --summary --numbered
     filehistory = log -p --follow -1
+    updateignore = !git rm -r --cached . && git add .
 
 # 私有配置
 [include]
