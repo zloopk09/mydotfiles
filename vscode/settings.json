@@ -40,7 +40,7 @@
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "workbench.iconTheme": "vscode-icons",
-    "workbench.colorTheme": "Atom One Dark",
+    "workbench.colorTheme": "One Dark Pro Darker",
     "security.workspace.trust.untrustedFiles": "open",
     "[dart]": {
       "editor.formatOnSave": true,
