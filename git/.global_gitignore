@@ -3,16 +3,32 @@
 .DS_Store
 .AppleDouble
 .LSOverride
-._*
-.Spotlight-V100
-.Trashes
 Icon?
-ehthumbs.db
-Thumbs.db
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+.apdisk
 
 # Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
 [Dd]esktop.ini
 $RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
 *.lnk
 
 # Linux
@@ -21,6 +37,7 @@ $RECYCLE.BIN/
 .directory
 .Trash-*
 .nfs*
+
 
 ### IDE & Editors ###
 # JetBrains (IntelliJ, PyCharm, etc)
@@ -57,183 +74,5 @@ Session.vim
 *.sublime-workspace
 *.sublime-project
 
-### Programming Languages ###
-# Java
-*.class
-*.jar
-*.war
-*.ear
-*.log
-target/
-build/
-.gradle/
-gradle-app.setting
-.gradletasknamecache
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-.venv/
-venv/
-ENV/
 
-# Node.js
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.npm/
-.yarn/
-.pnp/
-.pnp.js
-.env
-.env.local
-.env.*.local
-
-# Ruby
-*.gem
-*.rbc
-/.config
-/coverage/
-/InstalledFiles
-/pkg/
-/spec/reports/
-/test/tmp/
-/test/version_tmp/
-/tmp/
-.byebug_history
-
-### Build & Dependencies ###
-# Compiled files
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
-*.dylib
-*.lib
-*.a
-
-# Packages
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-
-# Logs and databases
-*.log
-*.sql
-*.sqlite
-*.sqlite3
-*.db
-
-### Project Specific ###
-# Documentation
-docs/_build/
-.doctrees/
-
-# Test coverage
-coverage/
-.coverage
-.coveragerc
-
-# Local development
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Cache directories
-.cache/
-.temp/
-.tmp/
-
-### Mobile Development ###
-# iOS
-*.pbxuser
-*.mode1v3
-*.mode2v3
-*.perspectivev3
-*.xcuserstate
-project.xcworkspace/
-xcuserdata/
-
-# Android
-*.apk
-*.ap_
-*.dex
-*.class
-bin/
-gen/
-local.properties
-proguard/
-.navigation/
-captures/
-.externalNativeBuild/
-.cxx/
-
-### Version Control ###
-# Git
-.git/
-.gitattributes
-
-# SVN
-.svn/
-*.svn-base
-
-### Security ###
-# Sensitive files
-*.pem
-*.key
-*.keystore
-*.jks
-*.p12
-*.pfx
-*.cer
-*.der
-*.crt
-
-### Temporary Files ###
-# Backup files
-*.bak
-*.backup
-*.old
-*.orig
-*.temp
-*.tmp
-
-# Merge files
-*.orig
-*.rej
-*.conflict
-
-### Custom ###
-# Add your custom ignore patterns here
