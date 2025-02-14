@@ -10,7 +10,9 @@ brew "git-delta"
 brew "trash"
 
 cask "cheatsheet"
-cask "spectacle"
+cask "jordanbaird-ice"
+cask "rectangle"
+cask "alfred"
 cask "iterm2"
 cask "visual-studio-code"
 
