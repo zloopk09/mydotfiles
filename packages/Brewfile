@@ -9,7 +9,7 @@ brew "antigen"
 brew "git-delta"
 brew "trash"
 
-cask "cheatsheet"
+# cask "cheatsheet"
 cask "jordanbaird-ice"
 cask "rectangle"
 cask "alfred"
@@ -24,7 +24,7 @@ cask "font-source-code-pro-for-powerline"
 
 # brew "openjdk@8"
 # brew "openjdk@11"
-brew "openjdk@17"
+# brew "openjdk@17"
 # brew "openjdk@21"
 
 
