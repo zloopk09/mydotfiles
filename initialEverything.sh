@@ -210,6 +210,7 @@ step_create_working_directories(){
         "$HOME/dev"
         "$HOME/dev/android/sdk"
         "$HOME/doc"
+        "$HOME/lib"
         "$HOME/mrepo"
         "$HOME/mrepo/github"
     )
